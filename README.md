@@ -14,8 +14,19 @@ personajes
 
 descripcion
 
-como se juega
+Como se juega
 
 
 
 
+Pablo Garcia Sanchez
+p.garcias.2017@alumnos.urjc.es
+Github: https://github.com/pablogs99
+
+Adrián Cerdeño de la Cruz
+a.cerdeno@alumnos.urjc.es
+Github: https://github.com/adricerdeno
+
+Wei Zheng
+w.zheng.2017@alumnos.urjc.es
+https://github.com/weizheng2
