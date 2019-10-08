@@ -85,3 +85,6 @@ Alberto Sánchez Mateo
 Wei Zheng
   - w.zheng.2017@alumnos.urjc.es
   - Github: https://github.com/weizheng2
+  
+ ## Link Trello
+ https://trello.com/invite/b/FihuifU9/e5640e6beb6ee002f1e204487b0cecc1/juegosenred
