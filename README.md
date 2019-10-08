@@ -70,18 +70,18 @@ Canciones a implementar:
 
 ## ------------------------------------- INTEGRANTES -----------------------------------
 
--Pablo Garcia Sanchez
-p.garcias.2017@alumnos.urjc.es
-Github: https://github.com/pablogs99
+Pablo Garcia Sanchez
+  - p.garcias.2017@alumnos.urjc.es
+  - Github: https://github.com/pablogs99
 
--Adrián Cerdeño de la Cruz
-a.cerdeno@alumnos.urjc.es
-Github: https://github.com/adricerdeno
+Adrián Cerdeño de la Cruz
+  - a.cerdeno@alumnos.urjc.es
+  - Github: https://github.com/adricerdeno
 
--Alberto Sánchez Mateo
-a.sanchezmat.2017@alumnos.urjc.es
-Github: https://github.com/albertosanchezmateo
+Alberto Sánchez Mateo
+  - a.sanchezmat.2017@alumnos.urjc.es
+  - Github: https://github.com/albertosanchezmateo
 
--Wei Zheng
-w.zheng.2017@alumnos.urjc.es
-Github: https://github.com/weizheng2
+Wei Zheng
+  - w.zheng.2017@alumnos.urjc.es
+  - Github: https://github.com/weizheng2
