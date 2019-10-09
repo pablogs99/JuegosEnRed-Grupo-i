@@ -12,7 +12,7 @@ Queremos crear una experiencia que fomente la competitividad con amigos, con un 
 
 ## Género
 
-Será un videojuego multijugador online de lucha, pues los jugadores se hayarán en un arena y su objetivo es dejar a 0 puntos de salud a su rival para quitar "vidas".
+Será un videojuego multijugador online de lucha, pues los jugadores se ubicarán en un arena y su objetivo es dejar a 0 puntos de salud a su rival para quitar "vidas".
 
 ## Gameplay
 Objetivo: Quitar 3 vidas a tu rival al dejarle a 0 puntos de salud o ganar por tiempo.
