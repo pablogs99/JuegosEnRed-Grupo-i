@@ -4,9 +4,8 @@ var config = {
 	expandParent :true,
 	width: 800,
 	height: 600,
-    scene: [pantallaPressStart,menuPrincipal],
+    scene: [pantallaPressStart,menuPrincipal,seleccionMapa],
 	scale: {
-   
      autoCenter: Phaser.Scale.CENTER_BOTH,
     },
 };
