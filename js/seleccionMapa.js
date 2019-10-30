@@ -12,9 +12,38 @@ class seleccionMapa extends Phaser.Scene {
     }
     create(){
 
-  let escenario1 = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 , "escenarioVerde");
+  let escenarioVerde=  this.add.image(this.game.renderer.width / 2 + 430, this.game.renderer.height / 2 - 200, "escenarioVerde").setScale(0.25);
+  let escenarioAzul =  this.add.image(this.game.renderer.width / 2 + 430, this.game.renderer.height / 2 , "escenarioAzul").setScale(0.25);
+  let escenarioRojo =  this.add.image(this.game.renderer.width / 2 + 430, this.game.renderer.height / 2 + 200, "escenarioRojo").setScale(0.25);
 
+  let escenarioVerdeGrande=  this.add.image(this.game.renderer.width / 2 - 185, this.game.renderer.height / 2 - 60, "escenarioVerde").setScale(0.65);
+  let escenarioAzulGrande =  this.add.image(this.game.renderer.width / 2 - 185, this.game.renderer.height / 2 - 60, "escenarioAzul").setScale(0.65);
+  let escenarioRojoGrande =  this.add.image(this.game.renderer.width / 2 - 185, this.game.renderer.height / 2 - 60, "escenarioRojo").setScale(0.65);
 
+  escenarioVerde.setInteractive();
+  escenarioAzul.setInteractive();
+  escenarioRojo.setInteractive();
+
+  escenarioVerdeGrande.setVisible(false);
+  escenarioAzulGrande.setVisible(false);
+  escenarioRojoGrande.setVisible(false);
+
+  escenarioVerde.on("pointerover", () => {
+    escenarioVerdeGrande.setVisible(true);
+    escenarioAzulGrande.setVisible(false);
+    escenarioRojoGrande.setVisible(false);
+  })
+  escenarioAzul.on("pointerover", () => {
+    escenarioVerdeGrande.setVisible(false);
+    escenarioAzulGrande.setVisible(true);
+    escenarioRojoGrande.setVisible(false);
+  })
+  escenarioRojo.on("pointerover", () => {
+    escenarioVerdeGrande.setVisible(false);
+    escenarioAzulGrande.setVisible(false);
+    escenarioRojoGrande.setVisible(true);
+  })
+  
 }
 
 }
