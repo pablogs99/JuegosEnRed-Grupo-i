@@ -77,7 +77,7 @@
     })
 
     jugarBoton.on("pointerup", () => {
-      this.scene.start('mapa');
+      this.scene.start('SelectPers');
     })
 
     ajustesBoton.on("pointerover", () => {
