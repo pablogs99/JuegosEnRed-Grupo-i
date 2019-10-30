@@ -16,9 +16,9 @@ class seleccionMapa extends Phaser.Scene {
   let escenarioAzul =  this.add.image(this.game.renderer.width / 2 + 430, this.game.renderer.height / 2 , "escenarioAzul").setScale(0.25);
   let escenarioRojo =  this.add.image(this.game.renderer.width / 2 + 430, this.game.renderer.height / 2 + 200, "escenarioRojo").setScale(0.25);
 
-  let escenarioVerdeGrande=  this.add.image(this.game.renderer.width / 2 - 185, this.game.renderer.height / 2 - 60, "escenarioVerde").setScale(0.65);
-  let escenarioAzulGrande =  this.add.image(this.game.renderer.width / 2 - 185, this.game.renderer.height / 2 - 60, "escenarioAzul").setScale(0.65);
-  let escenarioRojoGrande =  this.add.image(this.game.renderer.width / 2 - 185, this.game.renderer.height / 2 - 60, "escenarioRojo").setScale(0.65);
+  let escenarioVerdeGrande=  this.add.image(this.game.renderer.width / 2 - 185, this.game.renderer.height / 2 - 57, "escenarioVerde").setScale(0.65);
+  let escenarioAzulGrande =  this.add.image(this.game.renderer.width / 2 - 185, this.game.renderer.height / 2 - 57, "escenarioAzul").setScale(0.65);
+  let escenarioRojoGrande =  this.add.image(this.game.renderer.width / 2 - 185, this.game.renderer.height / 2 - 57, "escenarioRojo").setScale(0.65);
 
   escenarioVerde.setInteractive();
   escenarioAzul.setInteractive();
