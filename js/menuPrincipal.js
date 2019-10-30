@@ -6,8 +6,8 @@
   //Funcion que carga los assets en la memoria, coge el id que vamos a usar para referirnos al asset y la direccion
   preload() {
     //------------------ BackGround----------------------------------------------//
-   	this.load.image("portada", "../assets/images/backgrounds/menuPrincipal/portadaSolo.png"); 
-   
+   	this.load.image("portada", "../assets/images/backgrounds/menuPrincipal/portadaSolo.png");
+
 
    //----------------- UI Images --------------------------------------------//
 	  this.load.image("jugar", "../assets/images/userInterface/jugarBoton.png");
@@ -15,13 +15,13 @@
     this.load.image("rayaAmarilla", "../assets/images/userInterface/raya.png")
     this.load.image("soundOn", "../assets/images/userInterface/soundOn.png")
     this.load.image("soundOff", "../assets/images/userInterface/soundOff.png")
-	
-	
+
+
 	//----------------------- Audio ----------------------------------//
 	this.load.audio("musicaInicio","../assets/audio/menuPrincipal/theme-of-wargroove.mp3");
   }
-  
-  
+
+
   //Funcion que añade los assets u objetos al juego
   create() {
 
@@ -38,7 +38,6 @@
   //  let soundOn = this.add.image(700, 500, "soundOn").setDepth(1);
   //  let soundOff = this.add.image(700, 500, "soundOff").setDepth(1);
     let musicaInicio = this.sound.add("musicaInicio");
-
 
     //hacemos que se pueda interactuar con las imagenes
     jugarBoton.setInteractive();

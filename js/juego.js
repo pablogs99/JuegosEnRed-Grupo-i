@@ -2,8 +2,8 @@ var config = {
     type: Phaser.AUTO,
     parent: "canvas",
 	expandParent :true,
-	width: 1280,
-	height: 720,
+	width: 1000,
+	height: 600,
     scene: [pantallaPressStart,menuPrincipal,selectorPersonaje,seleccionMapa],
 	scale: {
      autoCenter: Phaser.Scale.CENTER_BOTH,
