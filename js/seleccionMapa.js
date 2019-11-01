@@ -17,9 +17,9 @@ class seleccionMapa extends Phaser.Scene {
 
   }
   create() {
-    var clickJugar = false;
 
     let blueBackground = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "blueBackground").setDepth(0);
+    
     //------------------Small BackGround----------------------------------------------//
     let escenarioVerde = this.add.image(this.game.renderer.width / 2 + 330, this.game.renderer.height / 2 - 180, "escenarioVerde").setScale(0.25).setDepth(2);
     let escenarioAzul = this.add.image(this.game.renderer.width / 2 + 330, this.game.renderer.height / 2, "escenarioAzul").setScale(0.25).setDepth(2);
@@ -52,7 +52,7 @@ class seleccionMapa extends Phaser.Scene {
     cambiarEscenario.setVisible(false);
 
 
-  //----------------- Eventos Raton IU --------------------------------------------//
+  //----------------- Eventos Raton UI --------------------------------------------//
     jugar.on("pointerover", () => {
       rayaAmarilla.x = jugar.x;
       rayaAmarilla.y = jugar.y;
@@ -79,7 +79,6 @@ class seleccionMapa extends Phaser.Scene {
       rayaAmarilla.setVisible(false);
     })
 
-
     //------------------ Raton por encima de Escenario----------------------------------------------//
     escenarioVerde.on("pointerover", () => {
       escenarioVerdeGrande.setVisible(true);
@@ -99,7 +98,7 @@ class seleccionMapa extends Phaser.Scene {
 
     //------------------ Click en Escenario----------------------------------------------//
     escenarioVerde.on("pointerup", () => {
-      escenarioVerde.setInteractive();
+      escenarioVerde.disableInteractive();
       escenarioAzul.disableInteractive();
       escenarioRojo.disableInteractive();
       cambiarEscenario.setVisible(true);
@@ -107,7 +106,7 @@ class seleccionMapa extends Phaser.Scene {
     })
     escenarioAzul.on("pointerup", () => {
       escenarioVerde.disableInteractive();
-      escenarioAzul.setInteractive();
+      escenarioAzul.disableInteractive();
       escenarioRojo.disableInteractive();
       cambiarEscenario.setVisible(true);
       jugar.setVisible(true);
@@ -115,7 +114,7 @@ class seleccionMapa extends Phaser.Scene {
     escenarioRojo.on("pointerup", () => {
       escenarioVerde.disableInteractive();
       escenarioAzul.disableInteractive();
-      escenarioRojo.setInteractive();
+      escenarioRojo.disableInteractive();
       cambiarEscenario.setVisible(true);
       jugar.setVisible(true);
     })
