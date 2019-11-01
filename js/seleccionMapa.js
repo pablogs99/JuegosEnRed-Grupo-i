@@ -14,12 +14,13 @@ class seleccionMapa extends Phaser.Scene {
     this.load.image("jugar", "../assets/images/userInterface/jugarBoton.png");
     this.load.image("cambiarEscenario", "../assets/images/userInterface/cambiarEscenario.png");
     this.load.image("rayaAmarilla", "../assets/images/userInterface/raya.png")
+    this.load.image("marco", "../assets/images/userInterface/marcoEscenario.png")
 
   }
   create() {
 
     let blueBackground = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "blueBackground").setDepth(0);
-    
+
     //------------------Small BackGround----------------------------------------------//
     let escenarioVerde = this.add.image(this.game.renderer.width / 2 + 330, this.game.renderer.height / 2 - 180, "escenarioVerde").setScale(0.25).setDepth(2);
     let escenarioAzul = this.add.image(this.game.renderer.width / 2 + 330, this.game.renderer.height / 2, "escenarioAzul").setScale(0.25).setDepth(2);
@@ -34,6 +35,7 @@ class seleccionMapa extends Phaser.Scene {
     let jugar = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 + 220, "jugar").setDepth(2);
     let cambiarEscenario = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 220, "cambiarEscenario").setDepth(2).setScale(0.8);
     let rayaAmarilla = this.add.image(this.game.renderer.width / 2 - 200, this.game.renderer.height / 2 + 220, "rayaAmarilla").setDepth(1).setScale(1.4);
+    let marco = this.add.image(this.game.renderer.width / 2 , this.game.renderer.height / 2 , "marco").setDepth(2).setScale(0.3);
 
     //----------------- Set Interactive --------------------------------------------//
     escenarioVerde.setInteractive();
@@ -42,6 +44,7 @@ class seleccionMapa extends Phaser.Scene {
     jugar.setInteractive();
     cambiarEscenario.setInteractive();
     rayaAmarilla.setInteractive();
+    marco.setInteractive();
 
     //----------------- Set Invisible --------------------------------------------//
     escenarioVerdeGrande.setVisible(false);
@@ -50,6 +53,7 @@ class seleccionMapa extends Phaser.Scene {
     jugar.setVisible(false);
     rayaAmarilla.setVisible(false);
     cambiarEscenario.setVisible(false);
+    marco.setVisible(false);
 
 
   //----------------- Eventos Raton UI --------------------------------------------//
@@ -68,6 +72,7 @@ class seleccionMapa extends Phaser.Scene {
       escenarioRojo.setInteractive();
       cambiarEscenario.setVisible(false);
       jugar.setVisible(false);
+      marco.setVisible(false);
     })
 
     cambiarEscenario.on("pointerover", () => {
@@ -101,22 +106,37 @@ class seleccionMapa extends Phaser.Scene {
       escenarioVerde.disableInteractive();
       escenarioAzul.disableInteractive();
       escenarioRojo.disableInteractive();
+
       cambiarEscenario.setVisible(true);
       jugar.setVisible(true);
+
+      marco.setVisible(true);
+      marco.x = escenarioVerde.x;
+      marco.y = escenarioVerde.y;
     })
     escenarioAzul.on("pointerup", () => {
       escenarioVerde.disableInteractive();
       escenarioAzul.disableInteractive();
       escenarioRojo.disableInteractive();
+
       cambiarEscenario.setVisible(true);
       jugar.setVisible(true);
+
+      marco.setVisible(true);
+      marco.x = escenarioAzul.x;
+      marco.y = escenarioAzul.y;
     })
     escenarioRojo.on("pointerup", () => {
       escenarioVerde.disableInteractive();
       escenarioAzul.disableInteractive();
       escenarioRojo.disableInteractive();
+
       cambiarEscenario.setVisible(true);
       jugar.setVisible(true);
+
+      marco.setVisible(true);
+      marco.x = escenarioRojo.x;
+      marco.y = escenarioRojo.y;
     })
 
   }
