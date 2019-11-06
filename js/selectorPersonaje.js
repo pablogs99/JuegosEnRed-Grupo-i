@@ -21,6 +21,22 @@ class selectorPersonaje extends Phaser.Scene {
      this.load.image("elfo", "../assets/images/PersonajesSelect/elfo.png");
 
      this.load.image("marco", "../assets/images/PersonajesSelect/marco.png");
+     this.load.image("marco2", "../assets/images/PersonajesSelect/marco2.png");
+
+     this.load.image("knight2", "../assets/images/PersonajesSelect/knight2.png");
+     this.load.image("orco2", "../assets/images/PersonajesSelect/orco2.png");
+     this.load.image("elfo2", "../assets/images/PersonajesSelect/elfo2.png");
+
+     this.load.image("KnightBig", "../assets/images/PersonajesSelect/knight.png");
+     this.load.image("OrcoBig", "../assets/images/PersonajesSelect/orco.png");
+     this.load.image("ElfoBig", "../assets/images/PersonajesSelect/elfo.png");
+
+     this.load.image("KnightBig2", "../assets/images/PersonajesSelect/knight2.png");
+     this.load.image("OrcoBig2", "../assets/images/PersonajesSelect/orco2.png");
+     this.load.image("ElfoBig2", "../assets/images/PersonajesSelect/elfo2.png");
+
+
+  
  
   }
   
@@ -32,38 +48,33 @@ class selectorPersonaje extends Phaser.Scene {
  
     let jugarBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 130, "jugar").setDepth(2).setScale(0.8);
     let rayaAmarilla = this.add.image(400, 330, "rayaAmarilla").setDepth(1).setScale(1.4); //setScale escala la imagen
-    let marco = this.add.image(this.game.renderer.width / 2 , this.game.renderer.height / 2, "marco").setDepth(2).setScale(0.2);
+    let marcoPers = this.add.image(this.game.renderer.width / 2 , this.game.renderer.height / 2, "marco").setDepth(3).setScale(0.2);
+    let marcoPers2 = this.add.image(this.game.renderer.width / 2 , this.game.renderer.height / 2, "marco2").setDepth(3).setScale(0.2);
     let vs = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 -20 , "vs").setDepth(1).setScale(1.5);
 
     let Knight = this.add.image(this.game.renderer.width / 2 - 400, this.game.renderer.height / 2 + 210, "knight").setDepth(2).setScale(0.2);
     let Orco = this.add.image(this.game.renderer.width / 2 - 260, this.game.renderer.height / 2 + 210, "orco").setDepth(2).setScale(0.2);
     let Elfo = this.add.image(this.game.renderer.width / 2 - 120, this.game.renderer.height / 2 + 210, "elfo").setDepth(2).setScale(0.2);
 
-    let Knight2 = this.add.image(this.game.renderer.width / 2 + 120, this.game.renderer.height / 2 + 210, "knight").setDepth(2).setScale(0.2);
-    let Orco2 = this.add.image(this.game.renderer.width / 2 + 260, this.game.renderer.height / 2 + 210, "orco").setDepth(2).setScale(0.2);
-    let Elfo2 = this.add.image(this.game.renderer.width / 2 + 400, this.game.renderer.height / 2 + 210, "elfo").setDepth(2).setScale(0.2);
+    let Knight2 = this.add.image(this.game.renderer.width / 2 + 120, this.game.renderer.height / 2 + 210, "knight2").setDepth(2).setScale(0.2);
+    let Orco2 = this.add.image(this.game.renderer.width / 2 + 260, this.game.renderer.height / 2 + 210, "orco2").setDepth(2).setScale(0.2);
+    let Elfo2 = this.add.image(this.game.renderer.width / 2 + 400, this.game.renderer.height / 2 + 210, "elfo2").setDepth(2).setScale(0.2);
+    
 
-    let P1Choose = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 220, "PersonajeChoose1").setDepth(2).setScale(0.8);
-    let P2Choose = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 220, "PersonajeChoose1").setDepth(2).setScale(0.8);
+    let KnightBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "KnightBig").setDepth(2).setScale(0.5);
+    let OrcoBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "OrcoBig").setDepth(2).setScale(0.5);
+    let ElfoBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "ElfoBig").setDepth(2).setScale(0.5);
+
+    let KnightBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "KnightBig2").setDepth(2).setScale(0.5);
+    let OrcoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "OrcoBig2").setDepth(2).setScale(0.5);
+    let ElfoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "ElfoBig2").setDepth(2).setScale(0.5);
+  
 
     //hacemos que se pueda interactuar con las imagenes
     jugarBoton.setInteractive();
     //Que sea invisible la barra y el marco
  
-
-    rayaAmarilla.setInteractive();
-    Knight.setInteractive();
-    Orco.setInteractive();
-    Elfo.setInteractive();
-
-    Knight2.setInteractive();
-    Orco2.setInteractive();
-    Elfo2.setInteractive();
   
-    marco.setInteractive();
-  
-    rayaAmarilla.setVisible(false);
-    marco.setVisible(false);
 
     //   Eventos de raton:
     //   pointerover - encima del objeto
@@ -84,66 +95,110 @@ class selectorPersonaje extends Phaser.Scene {
         this.scene.start('mapa');
       })
   
-//------------------ Click en pers1----------------------------------------------//
+
+//----------------- Set Interactive --------------------------------------------//
+Knight.setInteractive();
+Orco.setInteractive();
+Elfo.setInteractive();
+
+Knight2.setInteractive();
+Orco2.setInteractive();
+Elfo2.setInteractive();
+
+jugarBoton.setInteractive();
+rayaAmarilla.setInteractive();
+marcoPers.setInteractive();
+marcoPers2.setInteractive();
+
+//----------------- Set Invisible --------------------------------------------//
+KnightBig.setVisible(false);
+OrcoBig.setVisible(false);
+ElfoBig.setVisible(false);
+
+KnightBig2.setVisible(false);
+OrcoBig2.setVisible(false);
+ElfoBig2.setVisible(false);
+
+jugarBoton.setVisible(false);
+rayaAmarilla.setVisible(false);
+marcoPers.setVisible(false);
+marcoPers2.setVisible(false);
+
+
+//------------------ Click en pers----------------------------------------------//
 Knight.on("pointerup", () => {
-  
 
- P1Choose.setVisible(true);
+ jugarBoton.setVisible(true);
 
-  marco.setVisible(true);
-  marco.x = Knight.x;
-  marco.y = Knight.y;
+  KnightBig.setVisible(true);
+  OrcoBig.setVisible(false);
+  ElfoBig.setVisible(false);
+
+  marcoPers.setVisible(true);
+  marcoPers.x = Knight.x;
+  marcoPers.y = Knight.y;
 })
 Orco.on("pointerup", () => {
-  
 
-  P1Choose.setVisible(true);
+  jugarBoton.setVisible(true);
 
-  marco.setVisible(true);
-  marco.x = Orco.x;
-  marco.y = Orco.y;
+  KnightBig.setVisible(false);
+  OrcoBig.setVisible(true);
+  ElfoBig.setVisible(false);
+
+  marcoPers.setVisible(true);
+  marcoPers.x = Orco.x;
+  marcoPers.y = Orco.y;
 })
 Elfo.on("pointerup", () => {
+
+  jugarBoton.setVisible(true);
+
+  KnightBig.setVisible(false);
+  OrcoBig.setVisible(false);
+  ElfoBig.setVisible(true);
+
+  marcoPers.setVisible(true);
+  marcoPers.x = Elfo.x;
+  marcoPers.y = Elfo.y;
+})
+
+Knight2.on("pointerup", () => {
+
+  jugarBoton.setVisible(true);
  
-
-  P1Choose.setVisible(true);
-
-  marco.setVisible(true);
-  marco.x = Elfo.x;
-  marco.y = -Elfo.y;
-})
-
-//si el jugador 1 ha seleccionado
-
-Knight.on("pointerup", () => {
+   KnightBig2.setVisible(true);
+   OrcoBig2.setVisible(false);
+   ElfoBig2.setVisible(false);
  
-
-  P2Choose.setVisible(true);
-
-  marco.setVisible(true);
-  marco.x = Knight2.x;
-  marco.y = Knight2.y;
-})
-Orco.on("pointerup", () => {
+   marcoPers.setVisible(true);
+   marcoPers2.x = Knight2.x;
+   marcoPers2.y = Knight2.y;
+ })
+ Orco2.on("pointerup", () => {
  
-
-  P2Choose.setVisible(true);
-
-  marco.setVisible(true);
-  marco.x = Orco2.x;
-  marco.y = Orco2.y;
-})
-Elfo.on("pointerup", () => {
-  
-
-  P2Choose.setVisible(true);
-
-  marco.setVisible(true);
-  marco.x = Elfo2.x;
-  marco.y = -Elfo2.y;
-})
-
-
+   jugarBoton.setVisible(true);
+ 
+   KnightBig2.setVisible(false);
+   OrcoBig2.setVisible(true);
+   ElfoBig2.setVisible(false);
+ 
+   marcoPers2.setVisible(true);
+   marcoPers2.x = Orco2.x;
+   marcoPers2.y = Orco2.y;
+ })
+ Elfo2.on("pointerup", () => {
+ 
+   jugarBoton.setVisible(true);
+ 
+   KnightBig2.setVisible(false);
+   OrcoBig2.setVisible(false);
+   ElfoBig2.setVisible(true);
+ 
+   marcoPers2.setVisible(true);
+   marcoPers2.x = Elfo2.x;
+   marcoPers2.y = Elfo2.y;
+ })
     
   }
 
