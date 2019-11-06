@@ -69,6 +69,7 @@ class selectorPersonaje extends Phaser.Scene {
     let OrcoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "OrcoBig2").setDepth(2).setScale(0.5);
     let ElfoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "ElfoBig2").setDepth(2).setScale(0.5);
   
+    let cont=0;
 
     //hacemos que se pueda interactuar con las imagenes
     jugarBoton.setInteractive();
@@ -81,7 +82,9 @@ class selectorPersonaje extends Phaser.Scene {
     //   pointerout - deja de estar encima del objeto
     //   pointerup - click y soltar
     //   pointerDown - solo click
-
+   
+    
+    
     jugarBoton.on("pointerover", () => {
         rayaAmarilla.x = jugarBoton.x; //Que la posicion sea la misma que la del botonJugar
         rayaAmarilla.y = jugarBoton.y;
@@ -90,9 +93,9 @@ class selectorPersonaje extends Phaser.Scene {
       jugarBoton.on("pointerout", () => {
         rayaAmarilla.setVisible(false); // invisible si no esta el raton encima
       })
-  
+     
       jugarBoton.on("pointerup", () => {
-        this.scene.start('mapa');
+        this.scene.start('mapa'); 
       })
   
 
@@ -128,7 +131,9 @@ marcoPers2.setVisible(false);
 //------------------ Click en pers----------------------------------------------//
 Knight.on("pointerup", () => {
 
- jugarBoton.setVisible(true);
+  if(marcoPers2.visible){
+    jugarBoton.setVisible(true);
+  }
 
   KnightBig.setVisible(true);
   OrcoBig.setVisible(false);
@@ -137,10 +142,14 @@ Knight.on("pointerup", () => {
   marcoPers.setVisible(true);
   marcoPers.x = Knight.x;
   marcoPers.y = Knight.y;
+
+
 })
 Orco.on("pointerup", () => {
 
-  jugarBoton.setVisible(true);
+  if(marcoPers2.visible){
+    jugarBoton.setVisible(true);
+  }
 
   KnightBig.setVisible(false);
   OrcoBig.setVisible(true);
@@ -149,10 +158,13 @@ Orco.on("pointerup", () => {
   marcoPers.setVisible(true);
   marcoPers.x = Orco.x;
   marcoPers.y = Orco.y;
+
 })
 Elfo.on("pointerup", () => {
 
-  jugarBoton.setVisible(true);
+  if(marcoPers2.visible){
+    jugarBoton.setVisible(true);
+  }
 
   KnightBig.setVisible(false);
   OrcoBig.setVisible(false);
@@ -161,12 +173,15 @@ Elfo.on("pointerup", () => {
   marcoPers.setVisible(true);
   marcoPers.x = Elfo.x;
   marcoPers.y = Elfo.y;
+
+
 })
 
 Knight2.on("pointerup", () => {
 
-  jugarBoton.setVisible(true);
- 
+  if(marcoPers.visible){
+    jugarBoton.setVisible(true);
+  }
    KnightBig2.setVisible(true);
    OrcoBig2.setVisible(false);
    ElfoBig2.setVisible(false);
@@ -174,10 +189,13 @@ Knight2.on("pointerup", () => {
    marcoPers.setVisible(true);
    marcoPers2.x = Knight2.x;
    marcoPers2.y = Knight2.y;
+
  })
  Orco2.on("pointerup", () => {
  
-   jugarBoton.setVisible(true);
+  if(marcoPers.visible){
+    jugarBoton.setVisible(true);
+  }
  
    KnightBig2.setVisible(false);
    OrcoBig2.setVisible(true);
@@ -189,7 +207,9 @@ Knight2.on("pointerup", () => {
  })
  Elfo2.on("pointerup", () => {
  
-   jugarBoton.setVisible(true);
+  if(marcoPers.visible){
+    jugarBoton.setVisible(true);
+  }
  
    KnightBig2.setVisible(false);
    OrcoBig2.setVisible(false);
@@ -199,7 +219,8 @@ Knight2.on("pointerup", () => {
    marcoPers2.x = Elfo2.x;
    marcoPers2.y = Elfo2.y;
  })
-    
+   
+ 
   }
 
 }
