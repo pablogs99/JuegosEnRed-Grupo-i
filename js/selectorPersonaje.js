@@ -6,14 +6,14 @@ class selectorPersonaje extends Phaser.Scene {
   //Funcion que carga los assets en la memoria, coge el id que vamos a usar para referirnos al asset y la direccion
   preload() {
     //------------------ BackGround----------------------------------------------//
-	this.load.image("fondo", "../assets/images/backgrounds/SelectorPersonaje/blueMapBackground.jpg"); 
+	this.load.image("fondo", "../assets/images/backgrounds/SelectorPersonaje/Fondo1.jpg"); 
    
 
    //----------------- UI Images --------------------------------------------//
 	this.load.image("jugar", "../assets/images/userInterface/jugarBoton.png");
     this.load.image("rayaAmarilla", "../assets/images/userInterface/raya.png")
     this.load.image("vs", "../assets/images/backgrounds/SelectorPersonaje/vs.png")
-   
+    this.load.image("vs2", "../assets/images/backgrounds/SelectorPersonaje/vs2.png")
    
      //----------- PERS ------------------------------------------------//
      this.load.image("knight", "../assets/images/PersonajesSelect/knight.png");
@@ -27,13 +27,13 @@ class selectorPersonaje extends Phaser.Scene {
      this.load.image("orco2", "../assets/images/PersonajesSelect/orco2.png");
      this.load.image("elfo2", "../assets/images/PersonajesSelect/elfo2.png");
 
-     this.load.image("KnightBig", "../assets/images/PersonajesSelect/knight.png");
-     this.load.image("OrcoBig", "../assets/images/PersonajesSelect/orco.png");
-     this.load.image("ElfoBig", "../assets/images/PersonajesSelect/elfo.png");
+     this.load.image("KnightBig", "../assets/images/PersonajesSelect/knightBig.png");
+     this.load.image("OrcoBig", "../assets/images/PersonajesSelect/orcoBig.png");
+     this.load.image("ElfoBig", "../assets/images/PersonajesSelect/elfoBig.png");
 
-     this.load.image("KnightBig2", "../assets/images/PersonajesSelect/knight2.png");
-     this.load.image("OrcoBig2", "../assets/images/PersonajesSelect/orco2.png");
-     this.load.image("ElfoBig2", "../assets/images/PersonajesSelect/elfo2.png");
+     this.load.image("KnightBig2", "../assets/images/PersonajesSelect/knightBig2.png");
+     this.load.image("OrcoBig2", "../assets/images/PersonajesSelect/orcoBig2.png");
+     this.load.image("ElfoBig2", "../assets/images/PersonajesSelect/elfoBig2.png");
 
 
   
@@ -51,6 +51,7 @@ class selectorPersonaje extends Phaser.Scene {
     let marcoPers = this.add.image(this.game.renderer.width / 2 , this.game.renderer.height / 2, "marco").setDepth(3).setScale(0.2);
     let marcoPers2 = this.add.image(this.game.renderer.width / 2 , this.game.renderer.height / 2, "marco2").setDepth(3).setScale(0.2);
     let vs = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 -20 , "vs").setDepth(1).setScale(1.5);
+    let vs2 = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 -20 , "vs2").setDepth(1.5).setScale(1.5);
 
     let Knight = this.add.image(this.game.renderer.width / 2 - 400, this.game.renderer.height / 2 + 210, "knight").setDepth(2).setScale(0.2);
     let Orco = this.add.image(this.game.renderer.width / 2 - 260, this.game.renderer.height / 2 + 210, "orco").setDepth(2).setScale(0.2);
@@ -61,13 +62,13 @@ class selectorPersonaje extends Phaser.Scene {
     let Elfo2 = this.add.image(this.game.renderer.width / 2 + 400, this.game.renderer.height / 2 + 210, "elfo2").setDepth(2).setScale(0.2);
     
 
-    let KnightBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "KnightBig").setDepth(2).setScale(0.5);
-    let OrcoBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "OrcoBig").setDepth(2).setScale(0.5);
-    let ElfoBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "ElfoBig").setDepth(2).setScale(0.5);
+    let KnightBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "KnightBig").setDepth(2).setScale(0.3);
+    let OrcoBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "OrcoBig").setDepth(2).setScale(0.24);
+    let ElfoBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "ElfoBig").setDepth(2).setScale(0.3);
 
-    let KnightBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "KnightBig2").setDepth(2).setScale(0.5);
-    let OrcoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "OrcoBig2").setDepth(2).setScale(0.5);
-    let ElfoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "ElfoBig2").setDepth(2).setScale(0.5);
+    let KnightBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "KnightBig2").setDepth(2).setScale(0.3);
+    let OrcoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "OrcoBig2").setDepth(2).setScale(0.24);
+    let ElfoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "ElfoBig2").setDepth(2).setScale(0.3);
   
     let cont=0;
 
@@ -113,6 +114,8 @@ rayaAmarilla.setInteractive();
 marcoPers.setInteractive();
 marcoPers2.setInteractive();
 
+vs2.setInteractive();
+
 //----------------- Set Invisible --------------------------------------------//
 KnightBig.setVisible(false);
 OrcoBig.setVisible(false);
@@ -127,12 +130,16 @@ rayaAmarilla.setVisible(false);
 marcoPers.setVisible(false);
 marcoPers2.setVisible(false);
 
+vs2.setVisible(false);
+
 
 //------------------ Click en pers----------------------------------------------//
 Knight.on("pointerup", () => {
 
   if(marcoPers2.visible){
     jugarBoton.setVisible(true);
+    vs2.setVisible(true);
+  
   }
 
   KnightBig.setVisible(true);
@@ -149,6 +156,8 @@ Orco.on("pointerup", () => {
 
   if(marcoPers2.visible){
     jugarBoton.setVisible(true);
+    vs2.setVisible(true);
+  
   }
 
   KnightBig.setVisible(false);
@@ -164,6 +173,8 @@ Elfo.on("pointerup", () => {
 
   if(marcoPers2.visible){
     jugarBoton.setVisible(true);
+    vs2.setVisible(true);
+
   }
 
   KnightBig.setVisible(false);
@@ -181,6 +192,8 @@ Knight2.on("pointerup", () => {
 
   if(marcoPers.visible){
     jugarBoton.setVisible(true);
+    vs2.setVisible(true);
+   
   }
    KnightBig2.setVisible(true);
    OrcoBig2.setVisible(false);
@@ -195,6 +208,8 @@ Knight2.on("pointerup", () => {
  
   if(marcoPers.visible){
     jugarBoton.setVisible(true);
+    vs2.setVisible(true);
+  
   }
  
    KnightBig2.setVisible(false);
@@ -209,6 +224,8 @@ Knight2.on("pointerup", () => {
  
   if(marcoPers.visible){
     jugarBoton.setVisible(true);
+    vs2.setVisible(true);
+  
   }
  
    KnightBig2.setVisible(false);
