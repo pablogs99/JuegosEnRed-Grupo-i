@@ -86,6 +86,10 @@ class menuPrincipal extends Phaser.Scene {
     ajustesBoton.on("pointerout", () => {
       rayaAmarilla.setVisible(false);
     })
+    ajustesBoton.on("pointerup", () => {
+      musicaInicio.stop();
+      this.scene.start('ajustes');
+    })
 
 
   }
