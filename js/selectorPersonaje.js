@@ -199,7 +199,7 @@ Knight2.on("pointerup", () => {
    OrcoBig2.setVisible(false);
    ElfoBig2.setVisible(false);
  
-   marcoPers.setVisible(true);
+   marcoPers2.setVisible(true);
    marcoPers2.x = Knight2.x;
    marcoPers2.y = Knight2.y;
 
