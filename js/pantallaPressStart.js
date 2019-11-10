@@ -14,14 +14,14 @@ class pantallaPressStart extends Phaser.Scene {
 
         this.input.on('pointerup', function (pointer) {
 
-            this.scene.start('menu');
-
+            //this.scene.start('menu');
+			this.scene.start('combate');
         }, this);
 
         this.input.keyboard.on('keydown', function () {
 
-         this.scene.start('menu');
-
+         //this.scene.start('menu');
+		
         }, this);
 
     }

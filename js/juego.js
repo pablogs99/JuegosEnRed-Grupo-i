@@ -4,11 +4,17 @@ var config = {
 	expandParent :true,
 	width: 800,
 	height: 600,
-    scene: [menuPrincipal],
+    scene: [pantallaPressStart,menuPrincipal,seleccionMapa,combate],
 	scale: {
-   
      autoCenter: Phaser.Scale.CENTER_BOTH,
     },
+	physics:{
+		default :'arcade',
+		arcade : {
+			debug : true,
+			graviy: {y:10000},
+		},
+	}
 };
 
 var game = new Phaser.Game(config);
