@@ -15,6 +15,7 @@ class seleccionMapa extends Phaser.Scene {
     this.load.image("cambiarEscenario", "../assets/images/userInterface/cambiarEscenario.png");
     this.load.image("rayaAmarilla", "../assets/images/userInterface/raya.png")
     this.load.image("marcoEscenario", "../assets/images/userInterface/marcoEscenario.png")
+    this.load.image("volverMapa", "../assets/images/userInterface/volver.png")
 
   }
   create() {
@@ -35,7 +36,8 @@ class seleccionMapa extends Phaser.Scene {
     let jugar = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 + 220, "jugar").setDepth(2);
     let cambiarEscenario = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 220, "cambiarEscenario").setDepth(2).setScale(0.8);
     let rayaAmarilla = this.add.image(this.game.renderer.width / 2 - 200, this.game.renderer.height / 2 + 220, "rayaAmarilla").setDepth(1).setScale(1.4);
-    let marcoEscenario = this.add.image(this.game.renderer.width / 2 , this.game.renderer.height / 2 , "marcoEscenario").setDepth(2).setScale(0.3);
+    let marcoEscenario = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "marcoEscenario").setDepth(2).setScale(0.3);
+    let volverMapa = this.add.image(this.game.renderer.width / 2 - 430, this.game.renderer.height / 2 - 240, "volverMapa").setDepth(3).setScale(0.12);
 
     //----------------- Set Interactive --------------------------------------------//
     escenarioVerde.setInteractive();
@@ -45,6 +47,7 @@ class seleccionMapa extends Phaser.Scene {
     cambiarEscenario.setInteractive();
     rayaAmarilla.setInteractive();
     marcoEscenario.setInteractive();
+    volverMapa.setInteractive();
 
     //----------------- Set Invisible --------------------------------------------//
     escenarioVerdeGrande.setVisible(false);
@@ -56,7 +59,11 @@ class seleccionMapa extends Phaser.Scene {
     marcoEscenario.setVisible(false);
 
 
-  //----------------- Eventos Raton UI --------------------------------------------//
+    //----------------- Eventos Raton UI --------------------------------------------//
+    volverMapa.on("pointerup", () => {
+      this.scene.start('SelectPers');
+    })
+    
     jugar.on("pointerover", () => {
       rayaAmarilla.x = jugar.x;
       rayaAmarilla.y = jugar.y;

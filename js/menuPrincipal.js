@@ -16,12 +16,12 @@ class menuPrincipal extends Phaser.Scene {
     this.load.image("controles", "../assets/images/userInterface/controles.png")
     this.load.image("volver", "../assets/images/userInterface/volver.png")
     this.load.image("creditos", "../assets/images/userInterface/Creditos.png")
-    
+
     this.load.image("Alberto", "../assets/images/userInterface/Alberto-Sanchez-Mateo.png")
     this.load.image("Pablo", "../assets/images/userInterface/Pablo-Garcia-Sanchez.png")
     this.load.image("Wei", "../assets/images/userInterface/Wei-Zheng.png")
     this.load.image("Adrian", "../assets/images/userInterface/Adrian-Cerdeno-de-la-Cru.png")
-  
+
 
 
     //----------------------- Audio ----------------------------------//
@@ -48,12 +48,17 @@ class menuPrincipal extends Phaser.Scene {
     let Alberto = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 160, "Alberto").setDepth(1).setScale(0.35);
     let Pablo = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 60, "Pablo").setDepth(1).setScale(0.35);
     let Wei = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 110, "Wei").setDepth(1).setScale(0.35);
-    let Adrian = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 , "Adrian").setDepth(1).setScale(0.35);
+    let Adrian = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "Adrian").setDepth(1).setScale(0.35);
 
 
     //------------------ Audio ----------------------------------------------//
     let musicaInicio = this.sound.add("musicaInicio");
-    musicaInicio.play();
+    var isPlaying = musicaInicio.isPlaying;
+//No funciona
+    if (!isPlaying) {
+      musicaInicio.play();
+    }
+
 
     //----------------- Set Interactive --------------------------------------------//
     jugarBoton.setInteractive();
@@ -84,7 +89,7 @@ class menuPrincipal extends Phaser.Scene {
       pointerDown - solo click
     */
     //----------------- Raya Amarilla UI --------------------------------------------//
-  
+
     jugarBoton.on("pointerover", () => {
       rayaAmarilla.x = jugarBoton.x; //Que la posicion sea la misma que la del botonJugar
       rayaAmarilla.y = jugarBoton.y;
@@ -95,18 +100,18 @@ class menuPrincipal extends Phaser.Scene {
     })
 
     soundOn.on("pointerover", () => {
-      rayaAmarilla.x = soundOn.x; 
+      rayaAmarilla.x = soundOn.x;
       rayaAmarilla.y = soundOn.y;
-      rayaAmarilla.setVisible(true); 
+      rayaAmarilla.setVisible(true);
     })
     soundOn.on("pointerout", () => {
-      rayaAmarilla.setVisible(false); 
+      rayaAmarilla.setVisible(false);
     })
 
     soundOff.on("pointerover", () => {
-      rayaAmarilla.x = soundOff.x; 
+      rayaAmarilla.x = soundOff.x;
       rayaAmarilla.y = soundOff.y;
-      rayaAmarilla.setVisible(true); 
+      rayaAmarilla.setVisible(true);
     })
     soundOff.on("pointerout", () => {
       rayaAmarilla.setVisible(false);
@@ -122,21 +127,21 @@ class menuPrincipal extends Phaser.Scene {
     })
 
     volver.on("pointerover", () => {
-      rayaAmarilla.x = volver.x; 
+      rayaAmarilla.x = volver.x;
       rayaAmarilla.y = volver.y;
       rayaAmarilla.setVisible(true);
     })
     volver.on("pointerout", () => {
-      rayaAmarilla.setVisible(false); 
+      rayaAmarilla.setVisible(false);
     })
 
     creditos.on("pointerover", () => {
-      rayaAmarilla.x = creditos.x; 
+      rayaAmarilla.x = creditos.x;
       rayaAmarilla.y = creditos.y;
-      rayaAmarilla.setVisible(true); 
+      rayaAmarilla.setVisible(true);
     })
     creditos.on("pointerout", () => {
-      rayaAmarilla.setVisible(false); 
+      rayaAmarilla.setVisible(false);
     })
 
     ajustesBoton.on("pointerover", () => {
@@ -149,9 +154,8 @@ class menuPrincipal extends Phaser.Scene {
     })
 
 
-     //----------------- Click En Botones UI --------------------------------------------//
+    //----------------- Click En Botones UI --------------------------------------------//
     jugarBoton.on("pointerup", () => {
-      musicaInicio.stop();
       this.scene.start('SelectPers');
     })
 
@@ -195,17 +199,17 @@ class menuPrincipal extends Phaser.Scene {
 
     })
 
-    soundOn.on("pointerup",() =>{
+    soundOn.on("pointerup", () => {
       soundOff.setVisible(true);
       musicaInicio.pause();
       soundOn.setVisible(false);
     })
-    soundOff.on("pointerup",() =>{
+    soundOff.on("pointerup", () => {
       soundOn.setVisible(true);
       musicaInicio.resume();
       soundOff.setVisible(false);
     })
-    
+
   }
 
 }
