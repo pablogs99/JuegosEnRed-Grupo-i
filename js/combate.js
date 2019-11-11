@@ -14,17 +14,15 @@ class combate extends Phaser.Scene {
 		fondo.depth = 10;
 		
 		//Cargamos las plataformas
-		let placeHolderPlataformas = this.load.image("plataformas","assets/images/backgrounds/mapas/placeHolderPlataformas.png")
+		let placeHolderPlataformas = this.load.image("placeHolder","assets/images/backgrounds/mapas/placeHolderPlataformas.png")
 		plataformas = this.physics.add.staticGroup();
-
-		let actual = plataformas.create(180, 490, 'plataformas');
+		let actual = plataformas.create(180, 490, 'placeHolder');
 		actual.setSize(482,1,false).setOffset(0,0);
-
-		actual = plataformas.create(48, 310, 'plataformas');
+		actual = plataformas.create(48, 310, 'placeHolder');
 		actual.setSize(235,1).setOffset(0,0);
-		
-		actual = plataformas.create(500, 310, 'plataformas');
+		actual = plataformas.create(500, 310, 'placeHolder');
 		actual.setSize(305,1).setOffset(0,0);
+		
 		
 		
 		
@@ -44,27 +42,32 @@ class combate extends Phaser.Scene {
 		
 		
 		//Añadimos el collider con las plataformas
-		this.physics.add.collider(jugador1.sprite,plataformas,function(){jugador1.colisionPlataforma()});
-		
+		this.physics.add.collider(jugador1.sprite,plataformas,function(){jugador1.colisionPlataforma(jugador1.sprite,plataformas)});
+		//jugador1.body.setCheckCollisionY(false);
 	}
 	
 	update(){
 		
 		// Recogemos información de teclado
-		this.input.keyboard.on('keyup-' + 'A', function (event) {jugador1.controladorTecladoUp("A")});
-		this.input.keyboard.on('keyup-' + 'D', function  (event){jugador1.controladorTecladoUp("D")});
+		this.input.keyboard.on('keyup-' + 'A', function (event){jugador1.controladorTecladoUp("movIzquierda")});
+		this.input.keyboard.on('keyup-' + 'D', function (event){jugador1.controladorTecladoUp("movDerecha")});
+		this.input.keyboard.on('keyup-' + 'S', function (event){jugador1.controladorTecladoUp("abajo")})
 		
 		
-		this.input.keyboard.on('keydown-' + 'A', function (event) {jugador1.controladorTecladoDown("A")});	
-		this.input.keyboard.on('keydown-' + 'D', function (event){jugador1.controladorTecladoDown("D")});
-		this.input.keyboard.on('keydown-' + 'SPACE',function (event){jugador1.controladorTecladoDown("espacio")});
 		
+		this.input.keyboard.on('keydown-' + 'A', function (event) {jugador1.controladorTecladoDown("movIzquierda")});	
+		this.input.keyboard.on('keydown-' + 'D', function (event){jugador1.controladorTecladoDown("movDerecha")});
+		this.input.keyboard.on('keydown-' + 'W',function (event){jugador1.controladorTecladoDown("salto")});
+		this.input.keyboard.on('keydown-' + 'S', function (event){jugador1.controladorTecladoDown("abajo")})
+		this.input.keyboard.on('keydown-' + 'Q', function(event){jugador1.controladorTecladoDown("ataque")})
 		
+		//plataformas.setVelocityX(10);
 			
 			
 			
 		//Iniciamos la animacion actual del personaje
 		jugador1.playAnimation();
+		console.log(jugador1.x)
 	}
 
 
