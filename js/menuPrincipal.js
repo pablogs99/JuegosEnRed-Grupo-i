@@ -16,6 +16,11 @@ class menuPrincipal extends Phaser.Scene {
     this.load.image("controles", "../assets/images/userInterface/controles.png")
     this.load.image("volver", "../assets/images/userInterface/volver.png")
     this.load.image("creditos", "../assets/images/userInterface/Creditos.png")
+    
+    this.load.image("Alberto", "../assets/images/userInterface/Alberto-Sanchez-Mateo.png")
+    this.load.image("Pablo", "../assets/images/userInterface/Pablo-Garcia-Sanchez.png")
+    this.load.image("Wei", "../assets/images/userInterface/Wei-Zheng.png")
+    this.load.image("Adrian", "../assets/images/userInterface/Adrian-Cerdeno-de-la-Cru.png")
   
 
 
@@ -40,6 +45,11 @@ class menuPrincipal extends Phaser.Scene {
     let controles = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 130, "controles").setDepth(1).setScale(0.55);
     let volver = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 220, "volver").setDepth(1).setScale(0.23);
 
+    let Alberto = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 160, "Alberto").setDepth(1).setScale(0.35);
+    let Pablo = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 60, "Pablo").setDepth(1).setScale(0.35);
+    let Wei = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 110, "Wei").setDepth(1).setScale(0.35);
+    let Adrian = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 , "Adrian").setDepth(1).setScale(0.35);
+
 
     //------------------ Audio ----------------------------------------------//
     let musicaInicio = this.sound.add("musicaInicio");
@@ -60,6 +70,11 @@ class menuPrincipal extends Phaser.Scene {
     soundOff.setVisible(false);
     controles.setVisible(false);
     volver.setVisible(false);
+
+    Alberto.setVisible(false);
+    Pablo.setVisible(false);
+    Wei.setVisible(false);
+    Adrian.setVisible(false);
 
     /*
       Eventos de raton:
@@ -157,6 +172,27 @@ class menuPrincipal extends Phaser.Scene {
       creditos.setVisible(true);
       ajustesBoton.setVisible(true);
       jugarBoton.setVisible(true);
+
+      Alberto.setVisible(false);
+      Pablo.setVisible(false);
+      Wei.setVisible(false);
+      Adrian.setVisible(false)
+    })
+
+    creditos.on("pointerup", () => {
+      soundOn.setVisible(false);
+      soundOff.setVisible(false);
+      controles.setVisible(false);
+      volver.setVisible(true);
+      creditos.setVisible(false);
+      ajustesBoton.setVisible(false);
+      jugarBoton.setVisible(false);
+
+      Alberto.setVisible(true);
+      Pablo.setVisible(true);
+      Wei.setVisible(true);
+      Adrian.setVisible(true)
+
     })
 
     soundOn.on("pointerup",() =>{
