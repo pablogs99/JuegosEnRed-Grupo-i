@@ -34,16 +34,16 @@ class menuPrincipal extends Phaser.Scene {
     //Se le suma al eje y para bajarlo
     //Se le suma al eje x para moverlo a la derecha
     //------------------ BackGround----------------------------------------------//
-    let portada = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2-20, "portada").setDepth(0).setScale(1.1);
+    let portada = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 20, "portada").setDepth(0).setScale(1.1);
 
     //------------------ UI Images ----------------------------------------------//
-    let jugarBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 10, "jugar").setDepth(2);
+    let jugarBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 10, "jugar").setDepth(2).setScale(1.1);
     //let ajustesBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 140, "ajustes").setDepth(2);
     let creditos = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 230, "creditos").setDepth(2).setScale(0.45);
     let rayaAmarilla = this.add.image(400, 330, "rayaAmarilla").setDepth(1).setScale(1.4);
-    let soundOn = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 90, "soundOn").setDepth(1).setScale(0.55);
-    let soundOff = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 90, "soundOff").setDepth(1).setScale(0.55);
-    let controles = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 160, "controles").setDepth(1).setScale(0.55);
+    let soundOn = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 90, "soundOn").setDepth(1).setScale(0.45);
+    let soundOff = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 90, "soundOff").setDepth(1).setScale(0.45);
+    let controles = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 160, "controles").setDepth(1).setScale(0.45);
     let volver = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 220, "volver").setDepth(1).setScale(0.23);
 
     let keyboard = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 50, "keyboard").setDepth(1).setScale(1);
@@ -56,7 +56,7 @@ class menuPrincipal extends Phaser.Scene {
     //------------------ Audio ----------------------------------------------//
     let musicaInicio = this.sound.add("musicaInicio");
     var isPlaying = musicaInicio.isPlaying;
-//No funciona
+    //No funciona
     if (!isPlaying) {
       musicaInicio.play();
     }
