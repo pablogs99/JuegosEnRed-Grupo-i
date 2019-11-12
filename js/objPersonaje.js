@@ -1,7 +1,7 @@
-function Jugador(){
+function Jugador(dir){
 	
 ////////// Stats Generales /////////////////	
-	this.hp = 100;					// Puntos de Vida del jugador
+	this.hpMax = 100;
 	this.vidas = 3;					// Vidas para terminar partida
 	this.velocidad = 100;			// Velocidad a la que se desplaza el jugador
 	this.cosVelocidadCorrer = 2;	//	Cosiente por el que se multiplica la velocidad al correr
@@ -14,7 +14,8 @@ function Jugador(){
 	
 
 ////////// Estado Jugador ///////////////////	
-	this.direccion = 1;			// Dirección del jugador que controla el "flipX"
+	this.hp = this.hpMax;					// Puntos de Vida del jugador
+	this.direccion = dir;				// Dirección del jugador que controla el "flipX"
 	this.finAccion = 0;				// Contador que controla los frames de la accion del jugador
 	this.animacionActual = "j1_Iddle";	// Variable que controla la animación del sprite según la acción
 	this.stateCombo = 0;			// Contador que controla la cadena de combo
@@ -25,15 +26,13 @@ function Jugador(){
 	}
 	this.invulnerabilidad = false;	// Controlador que comrpueba si el jugador es invulnerable
 	
-	
-/////////// A Rellenar Previamente 	//////////////////////////	
-	this.habilidad = null;			// Variable que almacena la habilidad del jugador
-	this.skin = null;					// Variable que almacena el peronaje elegido por el jugador
+	this.barraHP;
+	this.barraEnergia;
 
 ////////////////// HitBoxes ///////////////////////////////////////////////////
 		this.sprite;					// Variable que almacena el objeto sprite de Phaser	
-		this.arma;
-		this.personaje
+		this.colisionArma;
+		
 //////////// Funciones de Jugador ////////////////////////////////////////
 	
 	//A RELLENAR EN PANTALLA JUGADOR
@@ -102,6 +101,7 @@ function Jugador(){
 			this.finAccion = this.frameAction.ataque;
 			this.accion.ataque = true;
 			this.animacionActual = "j1_Ataque";
+			this.colisionArma.active = true;
 		
 		}
 	}
@@ -191,17 +191,30 @@ function Jugador(){
 	//Función que crea las físicas del personaje, ademas de las colisiones con su entorno
 	this.setSprite = function(escena){
 		this.personaje = escena.physics.add.group();
-		this.sprite = escena.physics.add.sprite(200, 300, 'j1_Salto');
+		//this.sprite = escena.physics.add.sprite(200, 300, 'j1_Salto');
+		
+		console.log(this.direccion)
+		if(this.direccion === -1){
+			this.sprite = escena.physics.add.sprite(750, 100, 'j1_Salto');
+			this.sprite.flipX = true;
+			this.sprite.setOffset(99,0);
+		}else{
+			this.sprite = escena.physics.add.sprite(200, 100, 'j1_Salto');
+			this.sprite.flipX = false;
+			this.sprite.setOffset()
+			this.sprite.setOffset(20,0);
+		}
 		this.sprite.setSize(60,125,false).setOffset(20,0);
 		this.sprite.depth = 1;
 		this.sprite.body.checkCollision.up = false;
 		this.sprite.setCollideWorldBounds(true);
-	
+		
 
 		
 		this.hitbox = escena.physics.add.sprite(245,400, 'placeHolder')
 		this.hitbox.setSize(20,20,false).setOffset(0,0);
 		this.hitbox.depth = 2;
+		this.hitbox.body.checkCollision.up = false;
 		
 			
 		
@@ -210,6 +223,8 @@ function Jugador(){
 		
 		
 	}
+	
+	
 	
 	//Function playAnimation
 	//Funciçon que ejecuta la animación actual del personaje
@@ -221,8 +236,7 @@ function Jugador(){
 					this.accion.ataque = false;
 					this.animacionActual = "j1_Iddle";
 					this.sprite.anims.play(this.animacionActual,true)
-					//this.sprite.body.checkCollision.down = true;
-					//this.sprite.setVelocityY(0);
+					this.colisionArma.active = false
 					
 					
 					
@@ -233,7 +247,9 @@ function Jugador(){
 			
 			
 				this.hitbox.x = this.sprite.x + 49*this.direccion;
-				this.hitbox.y = this.sprite.y -9
+				this.hitbox.y = this.sprite.y -9;
+				
+				this.barraHP.displayWidth = 238*this.hp/this.hpMax;
 	}
 	
 
@@ -250,9 +266,12 @@ function Jugador(){
 		}
 	}
 	
-	this.colisionAtaque = function(jugador,enemigo){
-		 if(this.accion.ataque)
-		 console.log("Golpeado")
+	this.colisionAtaque = function(enemigo){
+		 if(this.accion.ataque){
+			this.accion.ataque = false
+			enemigo.hp -= 10;
+			console.log("HP Jugador: " + enemigo.hp)
+		 }
 	}
 	
 //---------------------------------------------------------------------------//

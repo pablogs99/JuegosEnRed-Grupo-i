@@ -1,6 +1,8 @@
-var jugador1 = new Jugador();
-var jugador2 = new Jugador()
-var plataformas;
+var jugador1 = new Jugador(1);
+var jugador2 = new Jugador(-1);
+var juego = new Juego();
+
+
 class combate extends Phaser.Scene {
     constructor() {
       super("combate"); 
@@ -11,19 +13,12 @@ class combate extends Phaser.Scene {
 		jugador1.loadSprites(this);
 		jugador2.loadSprites(this);
 		
-		//Cargamos el fondo seleccionado y lo llevamos al fondo
-		let fondo = this.load.image("fondo","assets/images/backgrounds/mapas/escenario1.png")
-		fondo.depth = 10;
+		//Cargamos el fondo seleccionado con sus plataformas correspondientes y lo llevamos al fondo
+		juego.preloadMapas(this);
 		
-		//Cargamos las plataformas
-		let placeHolderPlataformas = this.load.image("placeHolder","assets/images/backgrounds/mapas/placeHolderPlataformas.png")
-		plataformas = this.physics.add.staticGroup();
-		let actual = plataformas.create(180, 490, 'placeHolder');
-		actual.setSize(482,1,false).setOffset(0,0);
-		actual = plataformas.create(48, 310, 'placeHolder');
-		actual.setSize(235,1).setOffset(0,0);
-		actual = plataformas.create(500, 310, 'placeHolder');
-		actual.setSize(305,1).setOffset(0,0);
+		//Cargamos la interfaz de usuraio
+		juego.preloadUI(this);
+		
 		
 		
 		
@@ -32,7 +27,7 @@ class combate extends Phaser.Scene {
 	}
 	
 	create(){		
-		this.physics.world.setBounds(0,0,800,600,true,true,false,true);
+		this.physics.world.setBounds(0,0,1000,600,true,true,false,true);
 		//Cargamos animaciones sprites jugador 1
 		jugador1.createAnimations(this);
 		jugador2.createAnimations(this);
@@ -42,29 +37,29 @@ class combate extends Phaser.Scene {
 		jugador2.setSprite(this);
 		
 		//Cargamos el fondo
-		this.add.image(400,300,"fondo");
+		this.add.image(500,300,"fondo");
+		
+		//Cargamos la UI
+		juego.createUI(this);
 		
 		
 		//Añadimos el collider con las plataformas
-		this.physics.add.collider(jugador1.sprite,plataformas,function(){jugador1.colisionPlataforma(jugador1.sprite,plataformas)});
-		this.physics.add.collider(jugador2.sprite,plataformas,function(){jugador2.colisionPlataforma(jugador2.sprite,plataformas)})
-		this.physics.add.collider(jugador1.hitbox,jugador2.sprite,function(){jugador1.colisionAtaque(jugador1.hitbox,jugador2.sprite)})
+		this.physics.add.collider(jugador1.sprite,juego.plataformas,function(){jugador1.colisionPlataforma(jugador1.sprite,juego.plataformas)});
+		this.physics.add.collider(jugador2.sprite,juego.plataformas,function(){jugador2.colisionPlataforma(jugador2.sprite,juego.plataformas)})
+		
+
+		
+		jugador1.colisionArma = this.physics.add.collider(jugador1.hitbox,jugador2.sprite,function(){jugador1.colisionAtaque(jugador2)})
+		jugador1.colisionArma.active  = false;
+		jugador2.colisionArma  = this.physics.add.collider(jugador2.hitbox,jugador1.sprite,function(){jugador2.colisionAtaque(jugador1)})
+		jugador2.colisionArma.active  = false;
 	}
 	
 	update(){
 		
 		// Recogemos información de teclado
-		this.input.keyboard.on('keyup-' + 'A', function (event){jugador1.controladorTecladoUp("movIzquierda")});
-		this.input.keyboard.on('keyup-' + 'D', function (event){jugador1.controladorTecladoUp("movDerecha")});
-		this.input.keyboard.on('keyup-' + 'S', function (event){jugador1.controladorTecladoUp("abajo")})
-		
-		
-		
-		this.input.keyboard.on('keydown-' + 'A', function (event) {jugador1.controladorTecladoDown("movIzquierda")});	
-		this.input.keyboard.on('keydown-' + 'D', function (event){jugador1.controladorTecladoDown("movDerecha")});
-		this.input.keyboard.on('keydown-' + 'W',function (event){jugador1.controladorTecladoDown("salto")});
-		this.input.keyboard.on('keydown-' + 'S', function (event){jugador1.controladorTecladoDown("abajo")})
-		this.input.keyboard.on('keydown-' + 'Q', function(event){jugador1.controladorTecladoDown("ataque")})
+		juego.checkInputPersonaje1(this);
+		juego.checkInputPersonaje2(this);
 		
 		//plataformas.setVelocityX(10);
 			

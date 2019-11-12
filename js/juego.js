@@ -2,7 +2,7 @@ var config = {
     type: Phaser.AUTO,
     parent: "canvas",
 	expandParent :true,
-	width: 800,
+	width: 1000,
 	height: 600,
     scene: [pantallaPressStart,menuPrincipal,seleccionMapa,combate],
 	scale: {
