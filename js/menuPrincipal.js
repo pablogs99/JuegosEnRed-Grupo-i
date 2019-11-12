@@ -9,7 +9,7 @@ class menuPrincipal extends Phaser.Scene {
 
     //----------------- UI Images --------------------------------------------//
     this.load.image("jugar", "../assets/images/userInterface/jugarBoton.png");
-    this.load.image("ajustes", "../assets/images/userInterface/ajustesBoton.png");
+    //this.load.image("ajustes", "../assets/images/userInterface/ajustesBoton.png");
     this.load.image("rayaAmarilla", "../assets/images/userInterface/raya.png")
     this.load.image("soundOn", "../assets/images/userInterface/Sonido-ON.png")
     this.load.image("soundOff", "../assets/images/userInterface/Sonido-OFF.png")
@@ -34,16 +34,16 @@ class menuPrincipal extends Phaser.Scene {
     //Se le suma al eje y para bajarlo
     //Se le suma al eje x para moverlo a la derecha
     //------------------ BackGround----------------------------------------------//
-    let portada = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "portada").setDepth(0);
+    let portada = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2-20, "portada").setDepth(0).setScale(1.1);
 
     //------------------ UI Images ----------------------------------------------//
-    let jugarBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 40, "jugar").setDepth(2);
-    let ajustesBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 140, "ajustes").setDepth(2);
+    let jugarBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 10, "jugar").setDepth(2);
+    //let ajustesBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 140, "ajustes").setDepth(2);
     let creditos = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 230, "creditos").setDepth(2).setScale(0.45);
     let rayaAmarilla = this.add.image(400, 330, "rayaAmarilla").setDepth(1).setScale(1.4);
-    let soundOn = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 40, "soundOn").setDepth(1).setScale(0.55);
-    let soundOff = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 40, "soundOff").setDepth(1).setScale(0.55);
-    let controles = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 130, "controles").setDepth(1).setScale(0.55);
+    let soundOn = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 90, "soundOn").setDepth(1).setScale(0.55);
+    let soundOff = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 90, "soundOff").setDepth(1).setScale(0.55);
+    let controles = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 160, "controles").setDepth(1).setScale(0.55);
     let volver = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 220, "volver").setDepth(1).setScale(0.23);
 
     let keyboard = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 50, "keyboard").setDepth(1).setScale(1);
@@ -64,7 +64,7 @@ class menuPrincipal extends Phaser.Scene {
 
     //----------------- Set Interactive --------------------------------------------//
     jugarBoton.setInteractive();
-    ajustesBoton.setInteractive();
+    //ajustesBoton.setInteractive();
     soundOff.setInteractive();
     soundOn.setInteractive();
     controles.setInteractive();
@@ -73,10 +73,10 @@ class menuPrincipal extends Phaser.Scene {
     keyboard.setInteractive();
 
     //----------------- Set Invisible --------------------------------------------//
-    rayaAmarilla.setVisible(false);
-    soundOn.setVisible(false);
+    rayaAmarilla.setVisible(true);
+    soundOn.setVisible(true);
     soundOff.setVisible(false);
-    controles.setVisible(false);
+    controles.setVisible(true);
     volver.setVisible(false);
 
     keyboard.setVisible(false);
@@ -149,14 +149,14 @@ class menuPrincipal extends Phaser.Scene {
       rayaAmarilla.setVisible(false);
     })
 
-    ajustesBoton.on("pointerover", () => {
-      rayaAmarilla.x = ajustesBoton.x;
-      rayaAmarilla.y = ajustesBoton.y;
-      rayaAmarilla.setVisible(true);
-    })
-    ajustesBoton.on("pointerout", () => {
-      rayaAmarilla.setVisible(false);
-    })
+    // ajustesBoton.on("pointerover", () => {
+    //   rayaAmarilla.x = ajustesBoton.x;
+    //   rayaAmarilla.y = ajustesBoton.y;
+    //   rayaAmarilla.setVisible(true);
+    // })
+    // ajustesBoton.on("pointerout", () => {
+    //   rayaAmarilla.setVisible(false);
+    // })
 
 
     //----------------- Click En Botones UI --------------------------------------------//
@@ -164,22 +164,22 @@ class menuPrincipal extends Phaser.Scene {
       this.scene.start('SelectPers');
     })
 
-    ajustesBoton.on("pointerup", () => {
-      soundOn.setVisible(true);
-      controles.setVisible(true);
-      volver.setVisible(true);
-      creditos.setVisible(false);
-      ajustesBoton.setVisible(false);
-      jugarBoton.setVisible(false);
-    })
+    // ajustesBoton.on("pointerup", () => {
+    //   soundOn.setVisible(true);
+    //   controles.setVisible(true);
+    //   volver.setVisible(true);
+    //   creditos.setVisible(false);
+    //   ajustesBoton.setVisible(false);
+    //   jugarBoton.setVisible(false);
+    // })
 
     volver.on("pointerup", () => {
-      soundOn.setVisible(false);
+      soundOn.setVisible(true);
       soundOff.setVisible(false);
-      controles.setVisible(false);
+      controles.setVisible(true);
       volver.setVisible(false);
       creditos.setVisible(true);
-      ajustesBoton.setVisible(true);
+      //ajustesBoton.setVisible(true);
       jugarBoton.setVisible(true);
       keyboard.setVisible(false);
 
@@ -212,7 +212,7 @@ class menuPrincipal extends Phaser.Scene {
       controles.setVisible(false);
       volver.setVisible(true);
       creditos.setVisible(false);
-      ajustesBoton.setVisible(false);
+      //ajustesBoton.setVisible(false);
       jugarBoton.setVisible(false);
 
       Alberto.setVisible(true);
