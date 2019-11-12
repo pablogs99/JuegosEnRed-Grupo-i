@@ -1,4 +1,5 @@
-var jugador1 = new Jugador(true);
+var jugador1 = new Jugador();
+var jugador2 = new Jugador()
 var plataformas;
 class combate extends Phaser.Scene {
     constructor() {
@@ -8,6 +9,7 @@ class combate extends Phaser.Scene {
 	preload(){
 		//Cargamos las hojas de sprites
 		jugador1.loadSprites(this);
+		jugador2.loadSprites(this);
 		
 		//Cargamos el fondo seleccionado y lo llevamos al fondo
 		let fondo = this.load.image("fondo","assets/images/backgrounds/mapas/escenario1.png")
@@ -33,9 +35,11 @@ class combate extends Phaser.Scene {
 		this.physics.world.setBounds(0,0,800,600,true,true,false,true);
 		//Cargamos animaciones sprites jugador 1
 		jugador1.createAnimations(this);
+		jugador2.createAnimations(this);
 		
 		//Configuramos el sprite y lo colocamos en el canvas
 		jugador1.setSprite(this);
+		jugador2.setSprite(this);
 		
 		//Cargamos el fondo
 		this.add.image(400,300,"fondo");
@@ -43,7 +47,8 @@ class combate extends Phaser.Scene {
 		
 		//Añadimos el collider con las plataformas
 		this.physics.add.collider(jugador1.sprite,plataformas,function(){jugador1.colisionPlataforma(jugador1.sprite,plataformas)});
-		//jugador1.body.setCheckCollisionY(false);
+		this.physics.add.collider(jugador2.sprite,plataformas,function(){jugador2.colisionPlataforma(jugador2.sprite,plataformas)})
+		this.physics.add.collider(jugador1.hitbox,jugador2.sprite,function(){jugador1.colisionAtaque(jugador1.hitbox,jugador2.sprite)})
 	}
 	
 	update(){
@@ -67,7 +72,7 @@ class combate extends Phaser.Scene {
 			
 		//Iniciamos la animacion actual del personaje
 		jugador1.playAnimation();
-		console.log(jugador1.x)
+		jugador2.playAnimation();
 	}
 
 

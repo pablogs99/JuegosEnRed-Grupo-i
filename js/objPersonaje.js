@@ -1,4 +1,4 @@
-function Jugador(dir){
+function Jugador(){
 	
 ////////// Stats Generales /////////////////	
 	this.hp = 100;					// Puntos de Vida del jugador
@@ -14,7 +14,7 @@ function Jugador(dir){
 	
 
 ////////// Estado Jugador ///////////////////	
-	this.direccion = dir;			// Dirección del jugador que controla el "flipX"
+	this.direccion = 1;			// Dirección del jugador que controla el "flipX"
 	this.finAccion = 0;				// Contador que controla los frames de la accion del jugador
 	this.animacionActual = "j1_Iddle";	// Variable que controla la animación del sprite según la acción
 	this.stateCombo = 0;			// Contador que controla la cadena de combo
@@ -41,19 +41,7 @@ function Jugador(dir){
 		
 	}
 	
-	
-	//Funcion cambiarDireccion
-	//	Se utiliza para cambiar la dirección en el eje X del sprite del jugador
-	//	FALTA: usar flipx sobre this.sprite
-	this.cambiarDireccion = function(){
-		if(this.direccion){
-			this.direccion = false;
-		}else{
-			this.direccion = true;
-		}
-	}
-	
-	
+		
 	
 	//Function controladorTecladoDown
 	//	Se utiliza para manejar todos los eventos de teclado del Jugador;
@@ -83,6 +71,7 @@ function Jugador(dir){
 			this.sprite.flipX = true;
 			this.sprite.setOffset(99,0);
 			this.sprite.setVelocityX(-this.velocidad);
+			this.direccion = -1;
 			//Cambiar Animacion Actual
 		}
 		
@@ -93,9 +82,12 @@ function Jugador(dir){
 		//		Damos velocidad al sprite
 		//		Cambiamos animacion actual
 		if(tecla === "movDerecha"){
-			
 			this.sprite.flipX = false;
 			this.sprite.setOffset(20,0);
+			this.direccion = +1;
+			
+			this.hitbox.x = this.sprite.x + 45*this.direccion;
+			
 			
 			this.sprite.setVelocityX(this.velocidad);
 			
@@ -108,10 +100,9 @@ function Jugador(dir){
 		
 		if(tecla === "ataque"){
 			this.finAccion = this.frameAction.ataque;
+			this.accion.ataque = true;
 			this.animacionActual = "j1_Ataque";
-			this.arma.physics.add.sprite(200,300, 'placeHolder');
-			this.arma.setSize(15,15,false).setOffset(0,0);
-			this.arma.depth = 3;
+		
 		}
 	}
 	
@@ -130,6 +121,7 @@ function Jugador(dir){
 		//	Resetea la velocidad en el eje X a 0
 		if(tecla === "movDerecha"){
 			this.sprite.setVelocityX(0);
+		
 		}
 		
 		if(tecla === "abajo"){
@@ -198,18 +190,18 @@ function Jugador(dir){
 	//	Escena donde se carga el sprite
 	//Función que crea las físicas del personaje, ademas de las colisiones con su entorno
 	this.setSprite = function(escena){
-		
+		this.personaje = escena.physics.add.group();
 		this.sprite = escena.physics.add.sprite(200, 300, 'j1_Salto');
 		this.sprite.setSize(60,125,false).setOffset(20,0);
 		this.sprite.depth = 1;
 		this.sprite.body.checkCollision.up = false;
 		this.sprite.setCollideWorldBounds(true);
+	
 
-
-		/*
-		this.hitbox = escena.physics.add.sprite(200,300, 'placeHolder')
-		this.hitbox.setSize(15,15,false).setOffset(0,0);
-		this.hitbox.depth = 3;*/
+		
+		this.hitbox = escena.physics.add.sprite(245,400, 'placeHolder')
+		this.hitbox.setSize(20,20,false).setOffset(0,0);
+		this.hitbox.depth = 2;
 		
 			
 		
@@ -225,6 +217,8 @@ function Jugador(dir){
 	this.playAnimation = function(){
 				
 				if(this.finAccion == 0 && this.sprite.body.onFloor){
+					//this.hitbox.x = 200;
+					this.accion.ataque = false;
 					this.animacionActual = "j1_Iddle";
 					this.sprite.anims.play(this.animacionActual,true)
 					//this.sprite.body.checkCollision.down = true;
@@ -236,8 +230,10 @@ function Jugador(dir){
 					this.finAccion--;
 					this.sprite.anims.play(this.animacionActual, true);
 				}
-				console.log(this.animacionActual)
-				
+			
+			
+				this.hitbox.x = this.sprite.x + 49*this.direccion;
+				this.hitbox.y = this.sprite.y -9
 	}
 	
 
@@ -252,6 +248,11 @@ function Jugador(dir){
 			
 													//Cambiamos la animación a iddle (Cuando añada las animaciones de correr y caminar esto cambia)
 		}
+	}
+	
+	this.colisionAtaque = function(jugador,enemigo){
+		 if(this.accion.ataque)
+		 console.log("Golpeado")
 	}
 	
 //---------------------------------------------------------------------------//
