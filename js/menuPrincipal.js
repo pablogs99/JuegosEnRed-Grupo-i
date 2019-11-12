@@ -16,6 +16,7 @@ class menuPrincipal extends Phaser.Scene {
     this.load.image("controles", "../assets/images/userInterface/controles.png")
     this.load.image("volver", "../assets/images/userInterface/volver.png")
     this.load.image("creditos", "../assets/images/userInterface/Creditos.png")
+    this.load.image("keyboard", "../assets/images/userInterface/keyboard.png")
 
     this.load.image("Alberto", "../assets/images/userInterface/Alberto-Sanchez-Mateo.png")
     this.load.image("Pablo", "../assets/images/userInterface/Pablo-Garcia-Sanchez.png")
@@ -45,6 +46,7 @@ class menuPrincipal extends Phaser.Scene {
     let controles = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 130, "controles").setDepth(1).setScale(0.55);
     let volver = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 220, "volver").setDepth(1).setScale(0.23);
 
+    let keyboard = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 50, "keyboard").setDepth(1).setScale(1);
     let Alberto = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 160, "Alberto").setDepth(1).setScale(0.35);
     let Pablo = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 60, "Pablo").setDepth(1).setScale(0.35);
     let Wei = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 110, "Wei").setDepth(1).setScale(0.35);
@@ -68,6 +70,7 @@ class menuPrincipal extends Phaser.Scene {
     controles.setInteractive();
     volver.setInteractive();
     creditos.setInteractive();
+    keyboard.setInteractive();
 
     //----------------- Set Invisible --------------------------------------------//
     rayaAmarilla.setVisible(false);
@@ -75,6 +78,8 @@ class menuPrincipal extends Phaser.Scene {
     soundOff.setVisible(false);
     controles.setVisible(false);
     volver.setVisible(false);
+
+    keyboard.setVisible(false);
 
     Alberto.setVisible(false);
     Pablo.setVisible(false);
@@ -176,12 +181,30 @@ class menuPrincipal extends Phaser.Scene {
       creditos.setVisible(true);
       ajustesBoton.setVisible(true);
       jugarBoton.setVisible(true);
+      keyboard.setVisible(false);
+
 
       Alberto.setVisible(false);
       Pablo.setVisible(false);
       Wei.setVisible(false);
       Adrian.setVisible(false)
     })
+
+    controles.on("pointerup", () => {
+      soundOn.setVisible(false);
+      soundOff.setVisible(false);
+      controles.setVisible(false);
+      volver.setVisible(true);
+      creditos.setVisible(false);
+      keyboard.setVisible(true);
+      jugarBoton.setVisible(false);
+
+      Alberto.setVisible(false);
+      Pablo.setVisible(false);
+      Wei.setVisible(false);
+      Adrian.setVisible(false)
+    })
+
 
     creditos.on("pointerup", () => {
       soundOn.setVisible(false);
