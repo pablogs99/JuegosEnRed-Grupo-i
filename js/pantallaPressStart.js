@@ -44,7 +44,8 @@ class pantallaPressStart extends Phaser.Scene {
 
     }, this);
 
+    this.game.config.suena = false;
+    console.log(this.game.config.suena)
   }
-
 
 }

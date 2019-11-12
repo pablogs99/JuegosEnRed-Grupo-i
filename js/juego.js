@@ -8,6 +8,7 @@ var config = {
 	scale: {
      autoCenter: Phaser.Scale.CENTER_BOTH,
     },
+    suena: false,
 };
 
 var game = new Phaser.Game(config);

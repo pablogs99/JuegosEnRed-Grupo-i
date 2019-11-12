@@ -1,4 +1,4 @@
-class menuPrincipal extends Phaser.Scene {
+﻿class menuPrincipal extends Phaser.Scene {
   constructor() {
     super("menu"); //super("identificador de la escena") hace que esta escena herede todas las caracterisitcas de la clase scene de Phaser
   }
@@ -54,12 +54,18 @@ class menuPrincipal extends Phaser.Scene {
 
 
     //------------------ Audio ----------------------------------------------//
-    let musicaInicio = this.sound.add("musicaInicio");
-    var isPlaying = musicaInicio.isPlaying;
+    /*var isPlaying = musicaInicio.isPlaying;
     //No funciona
     if (!isPlaying) {
       musicaInicio.play();
+    }*/
+    let musicaInicio;
+    if(this.game.config.suena==false){
+      musicaInicio = this.sound.add("musicaInicio");
+      musicaInicio.play();
+      this.game.config.suena = true;
     }
+    console.log(this.game.config.suena)
 
 
     //----------------- Set Interactive --------------------------------------------//
