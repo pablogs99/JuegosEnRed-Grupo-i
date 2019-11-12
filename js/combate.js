@@ -1,5 +1,5 @@
-var jugador1 = new Jugador(1);
-var jugador2 = new Jugador(-1);
+var jugador1 
+var jugador2 
 var juego = new Juego();
 
 
@@ -9,6 +9,13 @@ class combate extends Phaser.Scene {
     }
 
 	preload(){
+		
+		//Creamos los objetos jugador
+		jugador1 = new Jugador(1);
+		jugador2 = new Jugador(-1);
+		
+		//Cargamos los datos del personaje
+		
 		//Cargamos las hojas de sprites
 		jugador1.loadSprites(this);
 		jugador2.loadSprites(this);
@@ -18,7 +25,6 @@ class combate extends Phaser.Scene {
 		
 		//Cargamos la interfaz de usuraio
 		juego.preloadUI(this);
-		
 		
 		
 		
@@ -53,6 +59,8 @@ class combate extends Phaser.Scene {
 		jugador1.colisionArma.active  = false;
 		jugador2.colisionArma  = this.physics.add.collider(jugador2.hitbox,jugador1.sprite,function(){jugador2.colisionAtaque(jugador1)})
 		jugador2.colisionArma.active  = false;
+		
+		
 	}
 	
 	update(){
@@ -68,6 +76,9 @@ class combate extends Phaser.Scene {
 		//Iniciamos la animacion actual del personaje
 		jugador1.playAnimation();
 		jugador2.playAnimation();
+		
+		juego.comprobarEstado(this);
+		
 	}
 
 
