@@ -174,15 +174,14 @@ class menuPrincipal extends Phaser.Scene {
     // })
 
     volver.on("pointerup", () => {
-      soundOn.setVisible(true);
-      soundOff.setVisible(false);
+      soundOn.setVisible(false);
+      soundOff.setVisible(true);
       controles.setVisible(true);
       volver.setVisible(false);
       creditos.setVisible(true);
       //ajustesBoton.setVisible(true);
       jugarBoton.setVisible(true);
       keyboard.setVisible(false);
-
 
       Alberto.setVisible(false);
       Pablo.setVisible(false);
