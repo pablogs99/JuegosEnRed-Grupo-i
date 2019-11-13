@@ -29,7 +29,7 @@ Objetivo: Quitar 3 vidas a tu rival al dejarle a 0 puntos de salud o ganar por t
     - **PowerUps**: cada ronda deberán aparecer objetos aleatorios que doten al personaje que los coja de una habilidad especial determinada. Se podría implementar una bola de fuego como proyectil o la posibilidad de realizar doble salto.
     - **Parry**: el jugador deberá poder bloquear los golpes del rival. En caso de hacerlo en un intervalo de tiempo determinado, el jugador que bloquea devolverá el ataque. Puede ocurrir un caso en el que bloquee el ataque del rival pero no se lo devuelva, en cuyo caso el jugador que bloquea retrocederá.
     - **Ataques Fuertes y Flojos**: el jugador podrá elegir entre dos tipos de ataques: uno más lento que al impactar hará mucho daño; o uno más rápido con menos daño.
-  
+
 ## Arte
 ### Estética general
 El juego poseerá una estética medieval-fantástica. Al crear un mundo con facciones, hemos decidido crear 2 personajes por facción, cuyo único propósito será estético, además de un escenario acorde con la temática de la facción.
@@ -38,8 +38,8 @@ El juego poseerá una estética medieval-fantástica. Al crear un mundo con facc
   - **Personajes**: tiras de sprites sacadas de la web: https://craftpix.net/, las cuales se convertirán en una animación en Phaser. Cada facción tiene 2 personajes distinos.
   - **Otros objetos en partida**: se realizarán sprites animados para los powerups, tanto como el objeto a coger como la habilidad obtenida.
   - **Interfaz**: para los menus de inicio y el lobby de partida se creará una interfaz al estilo de un teatrillo, y los medidores en partida, asi como el menú de pausa se usarán texturas de madera y clavos.
-  
-  
+
+
 ### Escenarios
 Crearemos 3 escenarios, uno por cada facción. Serán estáticos, en el sentido de que la cámara no necesitará moverse, pues desde un primer momento se verá la totalidad del espacio. Tendrán plataformas al estilo smash, así como perder vida por caerse de ellas.
 
@@ -50,7 +50,7 @@ Implementaremos los siguientes sonidos para mejorar la experiencia de usario:
   - Espadas chocando al hacer parry
   - Efectos de sonido al hacer click en menú
   - Grito de batalla para empezar partida
-  
+
 Canciones a implementar:
   - Canción menú inicio (teatrillo)
   - Canción Elfos
@@ -64,6 +64,45 @@ Canciones a implementar:
 - **Pantalla de juego**.
 - **Menú de pausa in game**.
 
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+# Entrega: Segunda Fase
+## Controles
+
+![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/Controles.PNG)
+Para esta entrega hemos decidido implementar únicamente aquellas mecánicas básicas del juego. Estas son:
+ - Correr: AD/JL
+ - Saltar: W/I. Solo se puede saltar si estamos tocando suelo.
+ - Descender plataformas: S/K.
+ - Atacar: Q/U. El enemigo recivirá daño si ambos no atacan a la vez, si no está bloqueando, si no esta en estado de invulnerabilidad por haber recivido daño previamente, o porque el empezo la animación de ataque primero.Gasta un cuarto de la energía.
+ - Defender: E/O. Personaje empezará a gastar energía hasta que se agote. No recivirá daño en este estado.
+
+Esto es una adaptación de los controles para que ambos jugadores puedan jugar en el mismo teclado.
+
+## Pantallas
+![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/diagrama_de_pantallas.png)
+ - Press Start: contiene el logo del grupo. Lleva a pantalla de inicio al usar algun botón o click de ratón. Se ha implementado como solución al problema de la música de Chrome.
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/pressStart.PNG)
+ - Menú Principal: Inicio del juego desde el cual podemos acceder a la pantalla de selección de personaje al darle a jugar, ver los controles del juego, o los créditos del mismo
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/menuPrincipal.PNG)
+ - Controles: Muestra una guía de los controles del juego
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/Controles.PNG)
+ - Créditos: Muestra el nombre y apellidos de los integrantes
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/Creditos.PNG)
+ - Selección Personaje: en esta pantalla ambos jugadores podrán elegir al personaje con el que jugaran la partida clicando con el ratón. Se pasará a la selección de escenario al haber elegido a los dos personajes y darle click al botón jugar.
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/seleccionPersonaje.PNG)
+ - Selección Mapa: en esta pantalla los jugadores podrán previsualizar los mapas al pasar por encima con el ratón. Al clickar se seleccionará el mapa, habilitando los botones jugar, que llevaría a la pantalla de combate y cambiar escenario, que permite seleccionar otro mapa.
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/seleccionEscenario.PNG)
+ - Combate: ambos jugadores aparecerán a un lado del escenario y podrán empezar a combatir con los controles del apartado anterior. Si se pulsa T se matará al jugador 1 y se reiniciará el juego. Si se muere uno de los dos jugadores ocurrirá lo mismo.
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/partida.PNG)
+
+ ## Diseño
+ El objetivo del juego es dejar a tu rival sin vida. Para ello deveremos usar el comando de ataque, al mismo tiempo que nos movemos por el escenario y usamos el comando defender para evitar los ataques del rival. Tanto el comando ataque como el comando defender gastan energía, necesaria para realizar ambos.
+
+ Hemos introducido 3 personajes distintos con estadísticas diferentes:
+ - Caballero hacha: es más lento, pero tiene más vida y mayor daño de ataque.
+ - Caballero lanza: es equilibrado, además de tener un ataque con un poco más de rango.
+ - Elfo: más rápido, recupera energía antes, pero tiene menos daño y puntos de vida
 
 
 
@@ -85,6 +124,6 @@ Alberto Sánchez Mateo
 Wei Zheng
   - w.zheng.2017@alumnos.urjc.es
   - Github: https://github.com/weizheng2
-  
+
  ## Link Trello
  https://trello.com/invite/b/FihuifU9/e5640e6beb6ee002f1e204487b0cecc1/juegosenred
