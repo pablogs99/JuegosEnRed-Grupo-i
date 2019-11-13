@@ -66,11 +66,10 @@ Canciones a implementar:
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
-#Etrega 2
-##Controles
+# Entrega: Segunda Fase
+## Controles
 
-![alt text](http://url/extra/keyboard.png)
-
+![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/Controles.PNG)
 Para esta entrega hemos decidido implementar únicamente aquellas mecánicas básicas del juego. Estas son:
  - Correr: AD/JL
  - Saltar: W/I. Solo se puede saltar si estamos tocando suelo.
@@ -80,12 +79,30 @@ Para esta entrega hemos decidido implementar únicamente aquellas mecánicas bá
 
 Esto es una adaptación de los controles para que ambos jugadores puedan jugar en el mismo teclado.
 
-##Pantallas
-![alt text](http://url/extra/diagrama_de_pantallas.png)
-
+## Pantallas
+![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/diagrama_de_pantallas.png)
  - Press Start: contiene el logo del grupo. Lleva a pantalla de inicio al usar algun botón o click de ratón. Se ha implementado como solución al problema de la música de Chrome.
- - Menú Principal: 
-
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/pressStart.PNG)
+ - Menú Principal: Inicio del juego desde el cual podemos acceder a la pantalla de selección de personaje al darle a jugar, ver los controles del juego, o los créditos del mismo
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/menuPrincipal.PNG)
+ - Controles: Muestra una guía de los controles del juego
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/Controles.PNG)
+ - Créditos: Muestra el nombre y apellidos de los integrantes
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/Creditos.PNG)
+ - Selección Personaje: en esta pantalla ambos jugadores podrán elegir al personaje con el que jugaran la partida clicando con el ratón. Se pasará a la selección de escenario al haber elegido a los dos personajes y darle click al botón jugar.
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/seleccionPersonaje.PNG)
+ - Selección Mapa: en esta pantalla los jugadores podrán previsualizar los mapas al pasar por encima con el ratón. Al clickar se seleccionará el mapa, habilitando los botones jugar, que llevaría a la pantalla de combate y cambiar escenario, que permite seleccionar otro mapa.
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/seleccionEscenario.PNG)
+ - Combate: ambos jugadores aparecerán a un lado del escenario y podrán empezar a combatir con los controles del apartado anterior. Si se pulsa T se matará al jugador 1 y se reiniciará el juego. Si se muere uno de los dos jugadores ocurrirá lo mismo.
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/partida.PNG)
+ 
+ ## Diseño
+ El objetivo del juego es dejar a tu rival sin vida. Para ello deveremos usar el comando de ataque, al mismo tiempo que nos movemos por el escenario y usamos el comando defender para evitar los ataques del rival. Tanto el comando ataque como el comando defender gastan energía, necesaria para realizar ambos.
+ 
+ Hemos introducido 3 personajes distintos con estadísticas diferentes:
+ - Caballero hacha: es más lento, pero tiene más vida y mayor daño de ataque.
+ - Caballero lanza: es equilibrado, además de tener un ataque con un poco más de rango.
+ - Elfo: más rápido, recupera energía antes, pero tiene menos daño y puntos de vida
 
 
 
