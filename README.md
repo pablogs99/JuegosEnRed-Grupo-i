@@ -65,28 +65,6 @@ Canciones a implementar:
 - **Menú de pausa in game**.
 
 
-------------------------------------------------------------------------------------------------------------------------------------------------
-#Etrega 2
-##Controles
-
-![alt text](http://url/extra/keyboard.png)
-
-Para esta entrega hemos decidido implementar únicamente aquellas mecánicas básicas del juego. Estas son:
- - Correr: AD/JL
- - Saltar: W/I. Solo se puede saltar si estamos tocando suelo.
- - Descender plataformas: S/K.
- - Atacar: Q/U. El enemigo recivirá daño si ambos no atacan a la vez, si no está bloqueando, si no esta en estado de invulnerabilidad por haber recivido daño previamente, o porque el empezo la animación de ataque primero.Gasta un cuarto de la energía.
- - Defender: E/O. Personaje empezará a gastar energía hasta que se agote. No recivirá daño en este estado.
-
-Esto es una adaptación de los controles para que ambos jugadores puedan jugar en el mismo teclado.
-
-##Pantallas
-![alt text](http://url/extra/diagrama_de_pantallas.png)
-
- - Press Start: contiene el logo del grupo. Lleva a pantalla de inicio al usar algun botón o click de ratón. Se ha implementado como solución al problema de la música de Chrome.
- - Menú Principal: 
-
-
 
 
 
