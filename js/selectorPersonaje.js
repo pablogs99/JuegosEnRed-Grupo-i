@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-var juego = new Juego();
-
->>>>>>> master
 class selectorPersonaje extends Phaser.Scene {
   constructor() {
     super("SelectPers"); //super("identificador de la escena") hace que esta escena herede todas las caracterisitcas de la clase scene de Phaser
@@ -149,10 +144,6 @@ class selectorPersonaje extends Phaser.Scene {
       if (marcoPers2.visible) {
         jugarBoton.setVisible(true);
         vs2.setVisible(true);
-<<<<<<< HEAD
-=======
-		
->>>>>>> master
 
       }
 
@@ -163,15 +154,8 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers.setVisible(true);
       marcoPers.x = Knight.x;
       marcoPers.y = Knight.y;
-<<<<<<< HEAD
 
 
-=======
-		
-		
-	  juego.personajeJugador1 = datosCaballero;
-	
->>>>>>> master
     })
     Orco.on("pointerup", () => {
 
@@ -188,11 +172,6 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers.setVisible(true);
       marcoPers.x = Orco.x;
       marcoPers.y = Orco.y;
-<<<<<<< HEAD
-=======
-	  
-	  juego.personajeJugador1 = datosLancero;
->>>>>>> master
 
     })
     Elfo.on("pointerup", () => {
@@ -210,11 +189,6 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers.setVisible(true);
       marcoPers.x = Elfo.x;
       marcoPers.y = Elfo.y;
-<<<<<<< HEAD
-=======
-	  
-	  juego.personajeJugador1 = datosElfo;
->>>>>>> master
 
 
     })
@@ -233,11 +207,6 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers2.setVisible(true);
       marcoPers2.x = Knight2.x;
       marcoPers2.y = Knight2.y;
-<<<<<<< HEAD
-=======
-	  
-	  juego.personajeJugador2 = datosCaballero;
->>>>>>> master
 
     })
     Orco2.on("pointerup", () => {
@@ -255,11 +224,6 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers2.setVisible(true);
       marcoPers2.x = Orco2.x;
       marcoPers2.y = Orco2.y;
-<<<<<<< HEAD
-=======
-	  
-	  juego.personajeJugador2 = datosLancero;
->>>>>>> master
     })
     Elfo2.on("pointerup", () => {
 
@@ -276,12 +240,6 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers2.setVisible(true);
       marcoPers2.x = Elfo2.x;
       marcoPers2.y = Elfo2.y;
-<<<<<<< HEAD
-=======
-	  
-	  juego.personajeJugador2 = datosElfo;
-	  
->>>>>>> master
     })
 
 

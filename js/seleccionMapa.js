@@ -72,13 +72,6 @@ class seleccionMapa extends Phaser.Scene {
     jugar.on("pointerout", () => {
       rayaAmarilla.setVisible(false);
     })
-<<<<<<< HEAD
-=======
-	
-	jugar.on("pointerup",() => {
-		this.scene.start('combate');
-	})
->>>>>>> master
 
     cambiarEscenario.on("pointerup", () => {
       escenarioVerde.setInteractive();
@@ -127,11 +120,6 @@ class seleccionMapa extends Phaser.Scene {
       marcoEscenario.setVisible(true);
       marcoEscenario.x = escenarioVerde.x;
       marcoEscenario.y = escenarioVerde.y;
-<<<<<<< HEAD
-=======
-	  
-	  juego.mapaActual = 1;
->>>>>>> master
     })
     escenarioAzul.on("pointerup", () => {
       escenarioVerde.disableInteractive();
@@ -144,12 +132,6 @@ class seleccionMapa extends Phaser.Scene {
       marcoEscenario.setVisible(true);
       marcoEscenario.x = escenarioAzul.x;
       marcoEscenario.y = escenarioAzul.y;
-<<<<<<< HEAD
-=======
-	  
-	  juego.mapaActual = 2;
-	  
->>>>>>> master
     })
     escenarioRojo.on("pointerup", () => {
       escenarioVerde.disableInteractive();
@@ -162,15 +144,7 @@ class seleccionMapa extends Phaser.Scene {
       marcoEscenario.setVisible(true);
       marcoEscenario.x = escenarioRojo.x;
       marcoEscenario.y = escenarioRojo.y;
-<<<<<<< HEAD
     })
-=======
-	  
-	  juego.mapaActual = 3;
-    })
-	
-	
->>>>>>> master
 
   }
 
