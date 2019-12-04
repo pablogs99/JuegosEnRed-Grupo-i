@@ -17,6 +17,7 @@
     this.load.image("volver", "../assets/images/userInterface/volver.png")
     this.load.image("creditos", "../assets/images/userInterface/Creditos.png")
     this.load.image("keyboard", "../assets/images/userInterface/keyboard.png")
+    this.load.image("historial", "../assets/images/Historial/Historial.png")
 
     this.load.image("Alberto", "../assets/images/userInterface/Alberto-Sanchez-Mateo.png")
     this.load.image("Pablo", "../assets/images/userInterface/Pablo-Garcia-Sanchez.png")
@@ -37,13 +38,13 @@
     let portada = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 20, "portada").setDepth(0).setScale(1.1);
 
     //------------------ UI Images ----------------------------------------------//
-    let jugarBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 10, "jugar").setDepth(2).setScale(1.1);
-    //let ajustesBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 140, "ajustes").setDepth(2);
-    let creditos = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 230, "creditos").setDepth(2).setScale(0.45);
+    let jugarBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 5, "jugar").setDepth(2).setScale(1.1);
+    let creditos = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 250, "creditos").setDepth(2).setScale(0.45);
     let rayaAmarilla = this.add.image(400, 330, "rayaAmarilla").setDepth(1).setScale(1.4);
-    let soundOn = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 90, "soundOn").setDepth(1).setScale(0.45);
-    let soundOff = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 90, "soundOff").setDepth(1).setScale(0.45);
-    let controles = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 160, "controles").setDepth(1).setScale(0.45);
+    let soundOn = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 70, "soundOn").setDepth(1).setScale(0.45);
+    let soundOff = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 70, "soundOff").setDepth(1).setScale(0.45);
+    let controles = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 135, "controles").setDepth(1).setScale(0.45);
+    let historial = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 195, "historial").setDepth(1).setScale(0.45);
     let volver = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 220, "volver").setDepth(1).setScale(0.23);
 
     let keyboard = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 50, "keyboard").setDepth(1).setScale(1);
@@ -77,6 +78,7 @@
     volver.setInteractive();
     creditos.setInteractive();
     keyboard.setInteractive();
+    historial.setInteractive();
 
     //----------------- Set Invisible --------------------------------------------//
     rayaAmarilla.setVisible(true);
@@ -107,6 +109,15 @@
       rayaAmarilla.setVisible(true); //ahora es visible
     })
     jugarBoton.on("pointerout", () => {
+      rayaAmarilla.setVisible(false); // invisible si no esta el raton encima
+    })
+
+    historial.on("pointerover", () => {
+      rayaAmarilla.x = historial.x; //Que la posicion sea la misma que la del botonJugar
+      rayaAmarilla.y = historial.y;
+      rayaAmarilla.setVisible(true); //ahora es visible
+    })
+    historial.on("pointerout", () => {
       rayaAmarilla.setVisible(false); // invisible si no esta el raton encima
     })
 
@@ -155,29 +166,14 @@
       rayaAmarilla.setVisible(false);
     })
 
-    // ajustesBoton.on("pointerover", () => {
-    //   rayaAmarilla.x = ajustesBoton.x;
-    //   rayaAmarilla.y = ajustesBoton.y;
-    //   rayaAmarilla.setVisible(true);
-    // })
-    // ajustesBoton.on("pointerout", () => {
-    //   rayaAmarilla.setVisible(false);
-    // })
-
-
     //----------------- Click En Botones UI --------------------------------------------//
     jugarBoton.on("pointerup", () => {
       this.scene.start('SelectPers');
     })
 
-    // ajustesBoton.on("pointerup", () => {
-    //   soundOn.setVisible(true);
-    //   controles.setVisible(true);
-    //   volver.setVisible(true);
-    //   creditos.setVisible(false);
-    //   ajustesBoton.setVisible(false);
-    //   jugarBoton.setVisible(false);
-    // })
+    historial.on("pointerup", () => {
+      this.scene.start("sceneHistorial");
+    })
 
     volver.on("pointerup", () => {
       soundOn.setVisible(false);
@@ -188,6 +184,7 @@
       //ajustesBoton.setVisible(true);
       jugarBoton.setVisible(true);
       keyboard.setVisible(false);
+      historial.setVisible(true);
 
       Alberto.setVisible(false);
       Pablo.setVisible(false);
@@ -203,6 +200,7 @@
       creditos.setVisible(false);
       keyboard.setVisible(true);
       jugarBoton.setVisible(false);
+      historial.setVisible(false);
 
       Alberto.setVisible(false);
       Pablo.setVisible(false);
@@ -219,6 +217,7 @@
       creditos.setVisible(false);
       //ajustesBoton.setVisible(false);
       jugarBoton.setVisible(false);
+      historial.setVisible(false);
 
       Alberto.setVisible(true);
       Pablo.setVisible(true);
