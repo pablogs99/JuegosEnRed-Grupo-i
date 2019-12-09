@@ -10,7 +10,7 @@ class pantallaPressStart extends Phaser.Scene {
     this.add.image()
 
     let logo = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 60, "logo").setScale(0.35);
-    let texto = this.add.text(this.game.renderer.width / 2 - 115, this.game.renderer.height / 2 + 240, "Press any button to start");
+    let texto = this.add.text(this.game.renderer.width / 2 - 115, this.game.renderer.height / 2 + 240, "Pulsa cualquier tecla para jugar");
 
     logo.alpha = 0;
     this.tweens.add({

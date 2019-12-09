@@ -12,7 +12,6 @@ class escenaHistorial extends Phaser.Scene {
     this.load.image("marcoBuscar", "../assets/images/Historial/marcoBuscar.png");
     this.load.image("buscar", "../assets/images/Historial/Buscar.png");
     this.load.image("cuadroCompleto", "../assets/images/Historial/cuadroCompleto.png");
-
     this.load.image("volverHistorial", "../assets/images/userInterface/volver.png");
 
     //this.load.image("idHistorial", "../assets/images/Historial/ID.png");
@@ -26,7 +25,7 @@ class escenaHistorial extends Phaser.Scene {
     let portadaHistorial = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 20, "portadaHistorial").setDepth(0).setScale(1.1);
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     let historialTitulo = this.add.image(this.game.renderer.width / 2 + 50, this.game.renderer.height / 2 - 250, "historialTitulo").setDepth(1).setScale(0.80);
-
+    let texto1 = this.add.text(this.game.renderer.width / 2 - 480, this.game.renderer.height / 2 - 170, "Escribir nombre de usuario",{ fontFamily: '"Roboto Condensed",Verdana, "Times New Roman", Tahoma, serif' , color: '#2d3037'}).setDepth(2).setScale(1.03);
     let buscar = this.add.image(this.game.renderer.width / 2 - 385, this.game.renderer.height / 2 - 215, "buscar").setDepth(1).setScale(0.5);
     let cuadroCompleto = this.add.image(this.game.renderer.width / 2 + 40, this.game.renderer.height / 2 - 150, "cuadroCompleto").setDepth(1).setScale(1.05);
     let marcoHistorial1 = this.add.image(this.game.renderer.width / 2 + 45, this.game.renderer.height / 2 + 35, "marcoHistorial").setDepth(1).setScale(1.05);
