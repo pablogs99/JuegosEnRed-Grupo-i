@@ -103,6 +103,30 @@ Esto es una adaptación de los controles para que ambos jugadores puedan jugar e
  - Caballero hacha: es más lento, pero tiene más vida y mayor daño de ataque.
  - Caballero lanza: es equilibrado, además de tener un ataque con un poco más de rango.
  - Elfo: más rápido, recupera energía antes, pero tiene menos daño y puntos de vida
+ --------------------------------------------------------------------------------------------------------------------------------
+ # Entrega: Tercera Fase
+ ## Navegación
+ Hemos incluido nuevas pantallas dentro del juego para hacer la navegación más fácil dentro del juego, además de nuevas pantallas para acomodar las implementaciones de esta fase:
+ 
+  - Pantalla historial: incluye todo la implementación visual de la funcionalidad de la api rest que hemos creado para esta fase. Consiste en una pequeña tabla que muestra las cuatro últimas partidas del servidor.
+  
+  - Pantalla fin de partida: nuevo menú que se muestra al completar un combate, permitiendo el fácil acceso a las pantallas anteriores de selección de personaje, escenario vuelta al menú principal o simplemente reiniciar la batalla con la misma configuración que antes.
+
+## Diagrama de clases
+En la siguiente imagen mostramos como se relacionan las clases de nuestra api rest:
+
+## Instrucciones de uso
+En la entrega hemos incluido tanto el archivo ".jar" como el proyecto maven que hemos creado. A continuación explicamos como arrancar el servidor con ambos métodos:
+
+### .jar
+1. En windows escriba cmd en la carpeta donde se encuentra el archivo "juegosEnRed-0.0.1-SNAPSHOT.jar"
+2. En la consola escriba el comando "java -jar juegosEnRed-0.0.1-SNAPSHOT.jar"
+3. Abra el navegador y escriba en la barra de busqueda: http://localhost:8080/
+
+## Proyecto Maven y Spring Tool Suite 4
+1. Abra el proyecto en Spring Tool suite 4 Importandolo con File>Import>Existing Projects into Workingspace
+2. En el archivo app.java, click derecho Run As> Java Application
+3. Abra el navegador y escriba en la barra de busqueda: http://localhost:8080/
 
 
 
