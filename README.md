@@ -69,7 +69,7 @@ Canciones a implementar:
 # Entrega: Segunda Fase
 ## Controles
 
-![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/Controles.PNG)
+![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/Controles.PNG)
 Para esta entrega hemos decidido implementar únicamente aquellas mecánicas básicas del juego. Estas son:
  - Correr: AD/JL
  - Saltar: W/I. Solo se puede saltar si estamos tocando suelo.
@@ -80,21 +80,21 @@ Para esta entrega hemos decidido implementar únicamente aquellas mecánicas bá
 Esto es una adaptación de los controles para que ambos jugadores puedan jugar en el mismo teclado.
 
 ## Pantallas
-![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/diagrama_de_pantallas.png)
+![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/diagrama_de_pantallas.png)
  - Press Start: contiene el logo del grupo. Lleva a pantalla de inicio al usar algun botón o click de ratón. Se ha implementado como solución al problema de la música de Chrome.
- ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/pressStart.PNG)
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/pressStart.PNG)
  - Menú Principal: Inicio del juego desde el cual podemos acceder a la pantalla de selección de personaje al darle a jugar, ver los controles del juego, o los créditos del mismo
- ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/menuPrincipal.PNG)
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/menuPrincipal.PNG)
  - Controles: Muestra una guía de los controles del juego
- ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/Controles.PNG)
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/Controles.PNG)
  - Créditos: Muestra el nombre y apellidos de los integrantes
- ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/Creditos.PNG)
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/Creditos.PNG)
  - Selección Personaje: en esta pantalla ambos jugadores podrán elegir al personaje con el que jugaran la partida clicando con el ratón. Se pasará a la selección de escenario al haber elegido a los dos personajes y darle click al botón jugar.
- ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/seleccionPersonaje.PNG)
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/seleccionPersonaje.PNG)
  - Selección Mapa: en esta pantalla los jugadores podrán previsualizar los mapas al pasar por encima con el ratón. Al clickar se seleccionará el mapa, habilitando los botones jugar, que llevaría a la pantalla de combate y cambiar escenario, que permite seleccionar otro mapa.
- ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/seleccionEscenario.PNG)
+ ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/seleccionEscenario.PNG)
  - Combate: ambos jugadores aparecerán a un lado del escenario y podrán empezar a combatir con los controles del apartado anterior. Si se pulsa T se matará al jugador 1 y se reiniciará el juego. Si se muere uno de los dos jugadores ocurrirá lo mismo.
- ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/extra/partida.PNG)
+
 
  ## Diseño
  El objetivo del juego es dejar a tu rival sin vida. Para ello deveremos usar el comando de ataque, al mismo tiempo que nos movemos por el escenario y usamos el comando defender para evitar los ataques del rival. Tanto el comando ataque como el comando defender gastan energía, necesaria para realizar ambos.
@@ -107,13 +107,17 @@ Esto es una adaptación de los controles para que ambos jugadores puedan jugar e
  # Entrega: Tercera Fase
  ## Navegación
  Hemos incluido nuevas pantallas dentro del juego para hacer la navegación más fácil dentro del juego, además de nuevas pantallas para acomodar las implementaciones de esta fase:
+  ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/diagramaPantallas.png)
  
   - Pantalla historial: incluye todo la implementación visual de la funcionalidad de la api rest que hemos creado para esta fase. Consiste en una pequeña tabla que muestra las cuatro últimas partidas del servidor.
+    ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/historial.PNG)
   
   - Pantalla fin de partida: nuevo menú que se muestra al completar un combate, permitiendo el fácil acceso a las pantallas anteriores de selección de personaje, escenario vuelta al menú principal o simplemente reiniciar la batalla con la misma configuración que antes.
+  ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/diagramaDeClases.png)
 
 ## Diagrama de clases
 En la siguiente imagen mostramos como se relacionan las clases de nuestra api rest:
+  ![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/finPartida.PNG)
 
 ## Instrucciones de uso
 En la entrega hemos incluido tanto el archivo ".jar" como el proyecto maven que hemos creado. A continuación explicamos como arrancar el servidor con ambos métodos:
