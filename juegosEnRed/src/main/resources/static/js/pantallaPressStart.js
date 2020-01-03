@@ -37,13 +37,13 @@ class pantallaPressStart extends Phaser.Scene {
 
     this.input.on('pointerup', function(pointer) {
 
-      this.scene.start('menu');
+      this.scene.start('sceneUsuario');
 
     }, this);
 
     this.input.keyboard.on('keydown', function() {
 
-      this.scene.start('menu');
+      this.scene.start('sceneUsuario');
 
     }, this);
 
