@@ -1,6 +1,7 @@
 var juego = new Juego();
 var controladorHistorial = new controladorHistorial();
 
+
 class pantallaPressStart extends Phaser.Scene {
   constructor() {
     super("pressStart");

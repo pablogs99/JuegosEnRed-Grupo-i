@@ -1,3 +1,31 @@
+	var Background; 
+    var jugarBoton;
+    var rayaAmarilla;
+    var marcoPers;
+    var marcoPers2;
+    var vs;
+    var vs2;
+    var volverPer;
+
+    var Knight;
+    var Orco;
+    var Elfo;
+
+    var Knight2;
+    var Orco2;
+    var Elfo2;
+
+
+    var KnightBig;
+    var OrcoBig;
+    var ElfoBig;
+
+    var KnightBig2;
+    var OrcoBig2;
+    var ElfoBig2;
+	var cont;
+	
+	var escenaDestruir;
 
 class selectorPersonaje extends Phaser.Scene {
   constructor() {
@@ -44,40 +72,40 @@ class selectorPersonaje extends Phaser.Scene {
 
   //Funcion que añade los assets u objetos al juego
   create() {
-
-    let Background = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "fondo").setDepth(0); //setDepth(numero) le da un numero en el eje z a la imagen para sobreponer una imagen sobre otra
+	 this.scene.remove("menu")
+	this.scene.remove("mapa");
+    Background = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "fondo").setDepth(0); //setDepth(numero) le da un numero en el eje z a la imagen para sobreponer una imagen sobre otra
     // 0 seria el que esta mas "hondo" y despues 1,2,etc
 
-    let jugarBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 130, "jugar").setDepth(2).setScale(0.8);
-    let rayaAmarilla = this.add.image(400, 330, "rayaAmarilla").setDepth(1).setScale(1.4); //setScale escala la imagen
-    let marcoPers = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "marco").setDepth(3).setScale(0.2);
-    let marcoPers2 = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "marco2").setDepth(3).setScale(0.2);
-    let vs = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 20, "vs").setDepth(1).setScale(1.5);
-    let vs2 = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 20, "vs2").setDepth(1.5).setScale(1.5);
-    let volverPer = this.add.image(this.game.renderer.width / 2 - 430, this.game.renderer.height / 2 - 240, "volverPer").setDepth(3).setScale(0.12);
+    jugarBoton = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 + 130, "jugar").setDepth(2).setScale(0.8);
+    rayaAmarilla = this.add.image(400, 330, "rayaAmarilla").setDepth(1).setScale(1.4); //setScale escala la imagen
+    marcoPers = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "marco").setDepth(3).setScale(0.2);
+    marcoPers2 = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2, "marco2").setDepth(3).setScale(0.2);
+    vs = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 20, "vs").setDepth(1).setScale(1.5);
+    vs2 = this.add.image(this.game.renderer.width / 2, this.game.renderer.height / 2 - 20, "vs2").setDepth(1.5).setScale(1.5);
 
-    let Knight = this.add.image(this.game.renderer.width / 2 - 400, this.game.renderer.height / 2 + 210, "knight").setDepth(2).setScale(0.2);
-    let Orco = this.add.image(this.game.renderer.width / 2 - 260, this.game.renderer.height / 2 + 210, "orco").setDepth(2).setScale(0.2);
-    let Elfo = this.add.image(this.game.renderer.width / 2 - 120, this.game.renderer.height / 2 + 210, "elfo").setDepth(2).setScale(0.2);
+    Knight = this.add.image(this.game.renderer.width / 2 - 400, this.game.renderer.height / 2 + 210, "knight").setDepth(2).setScale(0.2);
+    Orco = this.add.image(this.game.renderer.width / 2 - 260, this.game.renderer.height / 2 + 210, "orco").setDepth(2).setScale(0.2);
+    Elfo = this.add.image(this.game.renderer.width / 2 - 120, this.game.renderer.height / 2 + 210, "elfo").setDepth(2).setScale(0.2);
 
-    let Knight2 = this.add.image(this.game.renderer.width / 2 + 120, this.game.renderer.height / 2 + 210, "knight2").setDepth(2).setScale(0.2);
-    let Orco2 = this.add.image(this.game.renderer.width / 2 + 260, this.game.renderer.height / 2 + 210, "orco2").setDepth(2).setScale(0.2);
-    let Elfo2 = this.add.image(this.game.renderer.width / 2 + 400, this.game.renderer.height / 2 + 210, "elfo2").setDepth(2).setScale(0.2);
+    Knight2 = this.add.image(this.game.renderer.width / 2 + 120, this.game.renderer.height / 2 + 210, "knight2").setDepth(2).setScale(0.2);
+    Orco2 = this.add.image(this.game.renderer.width / 2 + 260, this.game.renderer.height / 2 + 210, "orco2").setDepth(2).setScale(0.2);
+	Elfo2 = this.add.image(this.game.renderer.width / 2 + 400, this.game.renderer.height / 2 + 210, "elfo2").setDepth(2).setScale(0.2);
 
 
-    let KnightBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "KnightBig").setDepth(2).setScale(0.3);
-    let OrcoBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "OrcoBig").setDepth(2).setScale(0.24);
-    let ElfoBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "ElfoBig").setDepth(2).setScale(0.3);
+    KnightBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "KnightBig").setDepth(2).setScale(0.3);
+	OrcoBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "OrcoBig").setDepth(2).setScale(0.24);
+    ElfoBig = this.add.image(this.game.renderer.width / 2 - 300, this.game.renderer.height / 2 - 80, "ElfoBig").setDepth(2).setScale(0.3);
 
-    let KnightBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "KnightBig2").setDepth(2).setScale(0.3);
-    let OrcoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "OrcoBig2").setDepth(2).setScale(0.24);
-    let ElfoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "ElfoBig2").setDepth(2).setScale(0.3);
+    KnightBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "KnightBig2").setDepth(2).setScale(0.3);
+    OrcoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "OrcoBig2").setDepth(2).setScale(0.24);
+    ElfoBig2 = this.add.image(this.game.renderer.width / 2 + 300, this.game.renderer.height / 2 - 80, "ElfoBig2").setDepth(2).setScale(0.3);
 
-    let cont = 0;
+
 
     //hacemos que se pueda interactuar con las imagenes
     jugarBoton.setInteractive();
-    volverPer.setInteractive();
+
     //Que sea invisible la barra y el marco
 
 
@@ -88,11 +116,7 @@ class selectorPersonaje extends Phaser.Scene {
     //   pointerup - click y soltar
     //   pointerDown - solo click
 
-    volverPer.on("pointerup", () => {
-	  let escenaDestruir = this.scene.get("menu")
-		escenaDestruir.scene.remove("menu");
-		this.scene.add("menu", menuPrincipal, true);
-    })
+   
 
     jugarBoton.on("pointerover", () => {
       rayaAmarilla.x = jugarBoton.x; //Que la posicion sea la misma que la del botonJugar
@@ -104,21 +128,25 @@ class selectorPersonaje extends Phaser.Scene {
     })
 
     jugarBoton.on("pointerup", () => {
-		let escenaDestruir = this.scene.get("mapa")
-		escenaDestruir.scene.remove("mapa");
+		conexion.send("SelecMapa");
+		this.scene.remove("mapa");
 		this.scene.add("mapa", seleccionMapa, true);
+		
     })
 
 
     //----------------- Set Interactive --------------------------------------------//
-    Knight.setInteractive();
-    Orco.setInteractive();
-    Elfo.setInteractive();
-
-    Knight2.setInteractive();
-    Orco2.setInteractive();
-    Elfo2.setInteractive();
-
+    
+	if(manejadorWS.jugadorID == 1){
+		Knight.setInteractive();
+		Orco.setInteractive();
+		Elfo.setInteractive();
+	}else if(manejadorWS.jugadorID == 2){
+		Knight2.setInteractive();
+		Orco2.setInteractive();
+		Elfo2.setInteractive();
+	}
+	
     jugarBoton.setInteractive();
     rayaAmarilla.setInteractive();
     marcoPers.setInteractive();
@@ -163,6 +191,7 @@ class selectorPersonaje extends Phaser.Scene {
 		
 		
 	  juego.personajeJugador1 = datosCaballero;
+	  conexion.send("caballero");
 	
     })
     Orco.on("pointerup", () => {
@@ -182,6 +211,7 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers.y = Orco.y;
 	  
 	  juego.personajeJugador1 = datosLancero;
+	  conexion.send("lancero");
 
     })
     Elfo.on("pointerup", () => {
@@ -201,6 +231,7 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers.y = Elfo.y;
 	  
 	  juego.personajeJugador1 = datosElfo;
+	  conexion.send("elfo");
 
 
     })
@@ -221,6 +252,7 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers2.y = Knight2.y;
 	  
 	  juego.personajeJugador2 = datosCaballero;
+	  conexion.send("caballero");
 
     })
     Orco2.on("pointerup", () => {
@@ -240,6 +272,7 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers2.y = Orco2.y;
 	  
 	  juego.personajeJugador2 = datosLancero;
+	  conexion.send("lancero");
     })
     Elfo2.on("pointerup", () => {
 
@@ -258,10 +291,155 @@ class selectorPersonaje extends Phaser.Scene {
       marcoPers2.y = Elfo2.y;
 	  
 	  juego.personajeJugador2 = datosElfo;
+	  conexion.send("elfo");
 	  
     })
 
 
+  }
+  update(){
+		if(manejadorWS.jugadorID == 1){
+				switch(manejadorWS.recivirPersonaje()){
+				
+				case 'caballero':
+				if (marcoPers.visible) {
+				jugarBoton.setVisible(true);
+				vs2.setVisible(true);
+
+				}
+				KnightBig2.setVisible(true);
+				OrcoBig2.setVisible(false);
+				ElfoBig2.setVisible(false);
+
+				marcoPers2.setVisible(true);
+				marcoPers2.x = Knight2.x;
+				marcoPers2.y = Knight2.y;
+			
+				juego.personajeJugador2 = datosCaballero;
+				
+				break;
+			case 'elfo':
+				if (marcoPers.visible) {
+					jugarBoton.setVisible(true);
+					vs2.setVisible(true);
+
+				}
+
+				KnightBig2.setVisible(false);
+				OrcoBig2.setVisible(false);
+				ElfoBig2.setVisible(true);
+
+				marcoPers2.setVisible(true);
+				marcoPers2.x = Elfo2.x;
+				marcoPers2.y = Elfo2.y;
+	  
+				juego.personajeJugador2 = datosElfo;
+				break;
+			case 'lancero':
+				if (marcoPers.visible) {
+					jugarBoton.setVisible(true);
+					vs2.setVisible(true);
+
+				}
+		
+				KnightBig2.setVisible(false);
+				OrcoBig2.setVisible(true);
+				ElfoBig2.setVisible(false);
+
+				marcoPers2.setVisible(true);
+				marcoPers2.x = Orco2.x;
+				marcoPers2.y = Orco2.y;
+	  
+				juego.personajeJugador2 = datosLancero;
+				break;
+				
+			case 'SelecMapa':
+				//escenaDestruir = this.scene.get("mapa")
+				this.scene.add("mapa", seleccionMapa, true);
+				break;
+				
+			case 'atrasPersonaje':
+				KnightBig2.setVisible(false);
+				OrcoBig2.setVisible(false);
+				ElfoBig2.setVisible(false);
+				marcoPers2.setVisible(false);
+				jugarBoton.setVisible(false);
+				break;
+			}
+		
+				
+		}else if(manejadorWS.jugadorID == 2){
+			switch(manejadorWS.recivirPersonaje()){
+				case 'caballero':
+				if (marcoPers2.visible) {
+					jugarBoton.setVisible(true);
+					vs2.setVisible(true);
+		
+
+				}	
+
+				KnightBig.setVisible(true);
+				OrcoBig.setVisible(false);
+				ElfoBig.setVisible(false);
+
+				marcoPers.setVisible(true);
+				marcoPers.x = Knight.x;
+				marcoPers.y = Knight.y;
+		
+		
+				juego.personajeJugador1 = datosCaballero;
+				
+				break;
+			case 'elfo':
+				if (marcoPers2.visible) {
+					jugarBoton.setVisible(true);
+					vs2.setVisible(true);
+
+				}
+
+				KnightBig.setVisible(false);
+				OrcoBig.setVisible(false);
+				ElfoBig.setVisible(true);
+
+				marcoPers.setVisible(true);
+				marcoPers.x = Elfo.x;
+				marcoPers.y = Elfo.y;
+	  
+				juego.personajeJugador1 = datosElfo;
+				break;
+			case 'lancero':
+				if (marcoPers2.visible) {
+					jugarBoton.setVisible(true);
+					vs2.setVisible(true);
+
+				}
+
+				KnightBig.setVisible(false);
+				OrcoBig.setVisible(true);
+				ElfoBig.setVisible(false);
+
+				marcoPers.setVisible(true);
+				marcoPers.x = Orco.x;
+				marcoPers.y = Orco.y;
+	  
+				juego.personajeJugador1 = datosLancero;
+				break;
+			case 'SelecMapa':
+				
+				this.scene.add("mapa", seleccionMapa, true);
+				break;
+			case 'atrasPersonaje':
+				KnightBig.setVisible(false);
+				OrcoBig.setVisible(false);
+				ElfoBig.setVisible(false);
+				marcoPers.setVisible(false);
+				jugarBoton.setVisible(true);
+				break;
+			}
+			
+		}
+		
+		//console.log(manejadorWS.recivirPersonaje());
   }
 
 }

@@ -77,20 +77,24 @@ function Juego(){
 
 ///////////////////////////////// UI ////////////////////////////////////////////////////////////////////////
 	this.preloadUI = function(escena){
-		escena.load.image("marcoJ1","assets/images/userInterface/marcoJugador1.png")
-		escena.load.image("marcoJ2","assets/images/userInterface/marcoJugador2.png")
-		escena.load.image("barraMarco","assets/images/userInterface/barraHP.png")
-		escena.load.image("separadorEnergia","assets/images/userInterface/separadorEnergia.png")
-		escena.load.image("indicadorHPJugador1","assets/images/userInterface/hpJugador1.png")
-		escena.load.image("indicadorHPJugador2","assets/images/userInterface/hpJugador2.png")
-		escena.load.image("fondoBarra","assets/images/userInterface/fondoBarra.png");
-		escena.load.image("barraEnergia","assets/images/userInterface/barraEnergia.png")
-		escena.load.image("indicadorEnergia","assets/images/userInterface/energia.png")
-		escena.load.image("separadorEnergia","assets/images/userInterface/separadorEnergia.png")
-		console.log(jugador1.personaje)
-		escena.load.image("cabezaJ1","assets/images/userInterface/"+ jugador1.personaje +"Cabeza.png" )
-		escena.load.image("cabezaJ2","assets/images/userInterface/"+ jugador2.personaje +"Cabeza.png" )
-		
+			escena.load.image("marcoJ1","assets/images/userInterface/marcoJugador1.png")
+			escena.load.image("marcoJ2","assets/images/userInterface/marcoJugador2.png")
+			escena.load.image("barraMarco","assets/images/userInterface/barraHP.png")
+			escena.load.image("separadorEnergia","assets/images/userInterface/separadorEnergia.png")
+			escena.load.image("indicadorHPJugador1","assets/images/userInterface/hpJugador1.png")
+			escena.load.image("indicadorHPJugador2","assets/images/userInterface/hpJugador2.png")
+			escena.load.image("fondoBarra","assets/images/userInterface/fondoBarra.png");
+			escena.load.image("barraEnergia","assets/images/userInterface/barraEnergia.png")
+			escena.load.image("indicadorEnergia","assets/images/userInterface/energia.png")
+			escena.load.image("separadorEnergia","assets/images/userInterface/separadorEnergia.png")
+			
+		if(manejadorWS.jugadorID == 1){
+			escena.load.image("cabezaJ1","assets/images/userInterface/"+ jugador1.personaje +"Cabeza.png" )
+			escena.load.image("cabezaJ2","assets/images/userInterface/"+ jugador2.personaje +"Cabeza.png" )
+		}else if(manejadorWS.jugadorID == 2){
+			escena.load.image("cabezaJ1","assets/images/userInterface/"+ jugador2.personaje +"Cabeza.png" )
+			escena.load.image("cabezaJ2","assets/images/userInterface/"+ jugador1.personaje +"Cabeza.png" )
+		}
 	}
 	
 	this.createUI = function(escena){
@@ -111,11 +115,7 @@ function Juego(){
 		temporal.displayWidth = 180;
 		temporal.displayHeight = 15;
 		
-		jugador1.barraEnergia = escena.add.image(86,45,"indicadorEnergia");	// Barra de Energía
-		jugador1.barraEnergia.setOrigin(0);
-		jugador1.barraEnergia.depth = 6;
-		jugador1.barraEnergia.displayWidth = 180;
-		jugador1.barraEnergia.displayHeight = 13;
+		
 		
 		
 		
@@ -126,13 +126,59 @@ function Juego(){
 			
 		}
 		
-		
-		jugador1.barraHP = escena.add.image(88,27,"indicadorHPJugador1")	//Barra de los HP 
-		jugador1.barraHP.setOrigin(0);
-		jugador1.barraHP.depth = 6
-		jugador1.barraHP.displayWidth = 215;
-		jugador1.barraHP.displayHeight = 19;
-		
+		if(manejadorWS.jugadorID == 1){
+			jugador1.barraHP = escena.add.image(88,27,"indicadorHPJugador1")	//Barra de los HP 
+			jugador1.barraHP.setOrigin(0);
+			jugador1.barraHP.depth = 6
+			jugador1.barraHP.displayWidth = 215;
+			jugador1.barraHP.displayHeight = 19;
+			
+			jugador1.barraEnergia = escena.add.image(86,45,"indicadorEnergia");	// Barra de Energía
+			jugador1.barraEnergia.setOrigin(0);
+			jugador1.barraEnergia.depth = 6;
+			jugador1.barraEnergia.displayWidth = 180;
+			jugador1.barraEnergia.displayHeight = 13;
+			
+			jugador2.barraHP = escena.add.image(915,27,"indicadorHPJugador2");	// Barra de HP
+			jugador2.barraHP.setOrigin(1,0)
+			jugador2.barraHP.depth = 6;
+			jugador2.barraHP.displayWidth = 238;
+			jugador2.barraHP.displayHeight = 19;
+			
+			jugador2.barraEnergia = escena.add.image(917,45,"indicadorEnergia");	// Barra de Energía
+			jugador2.barraEnergia.setOrigin(1,0);
+			jugador2.barraEnergia.depth = 5;
+			jugador2.barraEnergia.displayWidth = 180;
+			jugador2.barraEnergia.displayHeight = 13;
+			
+		}else if(manejadorWS.jugadorID == 2){
+			jugador2.barraHP = escena.add.image(88,27,"indicadorHPJugador1")	//Barra de los HP 
+			jugador2.barraHP.setOrigin(0);
+			jugador2.barraHP.depth = 6
+			jugador2.barraHP.displayWidth = 215;
+			jugador2.barraHP.displayHeight = 19;
+			
+			jugador2.barraEnergia = escena.add.image(86,45,"indicadorEnergia");	// Barra de Energía
+			jugador2.barraEnergia.setOrigin(0);
+			jugador2.barraEnergia.depth = 6;
+			jugador2.barraEnergia.displayWidth = 180;
+			jugador2.barraEnergia.displayHeight = 13;
+			
+			jugador1.barraHP = escena.add.image(915,27,"indicadorHPJugador2");	// Barra de HP
+			jugador1.barraHP.setOrigin(1,0)
+			jugador1.barraHP.depth = 6;
+			jugador1.barraHP.displayWidth = 238;
+			jugador1.barraHP.displayHeight = 19;
+			
+			jugador1.barraEnergia = escena.add.image(917,45,"indicadorEnergia");	// Barra de Energía
+			jugador1.barraEnergia.setOrigin(1,0);
+			jugador1.barraEnergia.depth = 5;
+			jugador1.barraEnergia.displayWidth = 180;
+			jugador1.barraEnergia.displayHeight = 13;
+			
+			
+			
+		}
 		temporal = escena.add.image(86,25,"fondoBarra").setOrigin(0);	// Fondo para la Barra de HP
 		temporal.displayWidth = 238;
 		temporal.displayHeight = 20;
@@ -163,12 +209,6 @@ function Juego(){
 		temporal.setOrigin(1,0);
 		temporal.depth = 7;
 		
-		jugador2.barraHP = escena.add.image(915,27,"indicadorHPJugador2");	// Barra de HP
-		jugador2.barraHP.setOrigin(1,0)
-		jugador2.barraHP.depth = 6;
-		jugador2.barraHP.displayWidth = 238;
-		jugador2.barraHP.displayHeight = 19;
-		
 		temporal = escena.add.image(917,25,"fondoBarra")			//Fondo Barra HP
 		temporal.setOrigin(1,0);
 		temporal.displayWidth = 238;
@@ -186,11 +226,7 @@ function Juego(){
 		temporal.displayWidth = 180;
 		temporal.displayHeight = 15;
 		
-		jugador2.barraEnergia = escena.add.image(917,45,"indicadorEnergia");	// Barra de Energía
-		jugador2.barraEnergia.setOrigin(1,0);
-		jugador2.barraEnergia.depth = 5;
-		jugador2.barraEnergia.displayWidth = 180;
-		jugador2.barraEnergia.displayHeight = 13;
+		
 		
 		for(let i = 782;i<962;i = i+45){									//Indicadores Barra Energía
 			temporal = escena.add.image(i,45,"separadorEnergia")
@@ -214,23 +250,26 @@ function Juego(){
 	this.personajeJugador2 = "caballero";
 	
 	this.checkInputPersonaje1 = function(escena){
-		escena.input.keyboard.on('keyup-' + 'A', function (event){jugador1.controladorTecladoUp("movIzquierda")});
-		escena.input.keyboard.on('keyup-' + 'D', function (event){jugador1.controladorTecladoUp("movDerecha")});
-		escena.input.keyboard.on('keyup-' + 'S', function (event){jugador1.controladorTecladoUp("abajo")})
-		escena.input.keyboard.on('keyup-' + 'E', function (event){jugador1.controladorTecladoUp("protege")})
+		
+		escena.input.keyboard.on('keyup-' + 'A', function (event){jugador1.controladorTecladoUp("movIzquierda");manejadorWS.enviarTeclaUp("movIzquierda");});
+		escena.input.keyboard.on('keyup-' + 'D', function (event){jugador1.controladorTecladoUp("movDerecha");manejadorWS.enviarTeclaUp("movDerecha");});
+		escena.input.keyboard.on('keyup-' + 'S', function (event){jugador1.controladorTecladoUp("abajo");manejadorWS.enviarTeclaUp("abajo");})
+		escena.input.keyboard.on('keyup-' + 'E', function (event){jugador1.controladorTecladoUp("protege");manejadorWS.enviarTeclaUp("protege");})
 		
 		
 		
-		escena.input.keyboard.on('keydown-' + 'A', function (event) {jugador1.controladorTecladoDown("movIzquierda")});	
-		escena.input.keyboard.on('keydown-' + 'D', function (event){jugador1.controladorTecladoDown("movDerecha")});
-		escena.input.keyboard.on('keydown-' + 'W',function (event){jugador1.controladorTecladoDown("salto")});
-		escena.input.keyboard.on('keydown-' + 'S', function (event){jugador1.controladorTecladoDown("abajo")})
-		escena.input.keyboard.on('keydown-' + 'Q', function(event){jugador1.controladorTecladoDown("ataque")})
-		escena.input.keyboard.on('keydown-' + 'E', function (event){jugador1.controladorTecladoDown("protege")})
+		escena.input.keyboard.on('keydown-' + 'A', function (event) {jugador1.controladorTecladoDown("movIzquierda");manejadorWS.enviarTeclaDown("movIzquierda");});	
+		escena.input.keyboard.on('keydown-' + 'D', function (event){jugador1.controladorTecladoDown("movDerecha");manejadorWS.enviarTeclaDown("movDerecha");});
+		escena.input.keyboard.on('keydown-' + 'W',function (event){jugador1.controladorTecladoDown("salto");manejadorWS.enviarTeclaDown("salto");});
+		escena.input.keyboard.on('keydown-' + 'S', function (event){jugador1.controladorTecladoDown("abajo");manejadorWS.enviarTeclaDown("abajo");})
+		escena.input.keyboard.on('keydown-' + 'Q', function(event){jugador1.controladorTecladoDown("ataque");manejadorWS.enviarTeclaDown("ataque");})
+		escena.input.keyboard.on('keydown-' + 'E', function (event){jugador1.controladorTecladoDown("protege");manejadorWS.enviarTeclaDown("protege");})
 	}
 	
 	this.checkInputPersonaje2 = function(escena){
-		escena.input.keyboard.on('keyup-' + 'J', function (event){jugador2.controladorTecladoUp("movIzquierda")});
+		// Crear funcion en el manejadorWS
+		
+		/*escena.input.keyboard.on('keyup-' + 'J', function (event){jugador2.controladorTecladoUp("movIzquierda")});
 		escena.input.keyboard.on('keyup-' + 'L', function (event){jugador2.controladorTecladoUp("movDerecha")});
 		escena.input.keyboard.on('keyup-' + 'K', function (event){jugador2.controladorTecladoUp("abajo")})
 		escena.input.keyboard.on('keyup-' + 'O', function (event){jugador2.controladorTecladoUp("protege")})
@@ -242,7 +281,7 @@ function Juego(){
 		escena.input.keyboard.on('keydown-' + 'I',function (event){jugador2.controladorTecladoDown("salto")});
 		escena.input.keyboard.on('keydown-' + 'K', function (event){jugador2.controladorTecladoDown("abajo")})
 		escena.input.keyboard.on('keydown-' + 'U', function(event){jugador2.controladorTecladoDown("ataque")})
-		escena.input.keyboard.on('keydown-' + 'O', function (event){jugador2.controladorTecladoDown("protege")})
+		escena.input.keyboard.on('keydown-' + 'O', function (event){jugador2.controladorTecladoDown("protege")})*/
 	}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -1,6 +1,7 @@
-function Jugador(dir,personajeData){
+function Jugador(dir,personajeData,addM){
 ////////// Stats Generales /////////////////	
 	this.jugador;
+	this.add = addM;
 	this.hpMax = personajeData.hpMax;
 	this.energiaMax = 100;
 	//this.vidas = 3;					// Vidas para terminar partida
@@ -62,7 +63,11 @@ function Jugador(dir,personajeData){
 		if(tecla === "salto"){
 			if(this.sprite.body.onFloor()){
 				this.finAccion = this.frameAction.salto
-				this.sprite.setVelocityY(-750);
+				if(this.add){
+					this.sprite.setVelocityY(-750*1.5);
+				}else{
+					this.sprite.setVelocityY(-750);
+				}
 				this.animacionActual = this.jugador +"_Salto" ;
 				this.accion.salto = true;
 			}
@@ -76,7 +81,11 @@ function Jugador(dir,personajeData){
 		if(tecla === "movIzquierda"){
 			this.sprite.flipX = true;
 			this.sprite.setOffset(personajeData.actualizarSpriteIzquierda,0);
-			this.sprite.setVelocityX(-this.velocidad);
+			if(this.add){
+				this.sprite.setVelocityX(-this.velocidad*2.003);
+			}else{
+				this.sprite.setVelocityX(-this.velocidad)
+			}
 			this.direccion = -1;
 			this.animacionActual = this.jugador +"_Corre"
 			this.finAccion = 20;
@@ -96,8 +105,12 @@ function Jugador(dir,personajeData){
 			this.finAccion = 20;
 			
 			
+			if(this.add){
+				this.sprite.setVelocityX(this.velocidad*2.003);
+			}else{
+				this.sprite.setVelocityX(this.velocidad);
+			}
 			
-			this.sprite.setVelocityX(this.velocidad);
 			
 			//Cambiar Animación Actual
 		}
@@ -123,6 +136,8 @@ function Jugador(dir,personajeData){
 				this.animacionActual = this.jugador +"_Defiende"
 			}
 		}
+		
+		
 	}
 	
 	
@@ -135,6 +150,7 @@ function Jugador(dir,personajeData){
 		if(tecla === "movIzquierda"){
 			this.sprite.setVelocityX(0);
 			this.finAccion = 0;
+			
 		}
 		
 		//D
@@ -142,7 +158,6 @@ function Jugador(dir,personajeData){
 		if(tecla === "movDerecha"){
 			this.sprite.setVelocityX(0);
 			this.finAccion = 0;
-		
 		}
 		
 		if(tecla === "abajo"){
@@ -153,8 +168,11 @@ function Jugador(dir,personajeData){
 			this.finAccion = 0;
 			this.accion.protege = false;
 			this.animacionActual = this.jugador +"_Defiende";
-			
 		}
+		
+		
+		
+		
 	}
 	
 	//Function loadSprites
@@ -271,7 +289,7 @@ function Jugador(dir,personajeData){
 		this.sprite.body.checkCollision.up = false;
 		this.sprite.setCollideWorldBounds(true);
 		
-
+	
 		
 		this.hitbox = escena.physics.add.sprite(245,400, 'placeHolder')
 		this.hitbox.setSize(personajeData.sizeArma.width,personajeData.sizeArma.height,false).setOffset(personajeData.armaOffSet.x,personajeData.armaOffSet.y);
@@ -280,9 +298,14 @@ function Jugador(dir,personajeData){
 		this.hitbox.body.checkCollision.up = false;
 		this.hitbox.body.checkCollision.down = false;
 		
-			
 		
-		this.sprite.body.setGravityY(1000);
+		if(this.add){
+				this.sprite.body.setGravityY(1000*2.6);;
+			}else{
+				this.sprite.body.setGravityY(1000);
+			}
+		
+
 
 		
 		
@@ -312,7 +335,7 @@ function Jugador(dir,personajeData){
 					
 					
 					}else{
-						console.log(this.finAccion);
+						//console.log(this.finAccion);
 						this.finAccion--;
 						this.sprite.anims.play(this.animacionActual, true);
 					}
@@ -343,7 +366,9 @@ function Jugador(dir,personajeData){
 					this.sprite.anims.play(this.animacionActual, true);
 					this.finAccion--;
 					if(this.finAccion == 0){
+						conexion.send("finCombate");
 						juego.fin = true;
+						
 						
 					}
 						

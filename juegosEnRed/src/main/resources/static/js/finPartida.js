@@ -1,4 +1,5 @@
-﻿class finPartida extends Phaser.Scene {
+﻿//let escenaDestroy;
+class finPartida extends Phaser.Scene {
   constructor(handle) {
     super(handle); //super("identificador de la escena") hace que esta escena herede todas las caracterisitcas de la clase scene de Phaser
   }
@@ -94,15 +95,15 @@
 
     //----------------- Click En Botones UI --------------------------------------------//
     jugarDeNuevo.on("pointerup", () => {
-	
+		conexion.send("volverCombate");
 		juego.destruirEscena(this)
 		this.scene.add("combate", combate, true); 
 	  
     })
 	
 	elegirEscenario.on("pointerup", () => {
-	
-		let escenaDestruir = this.scene.get("mapa")
+		conexion.send("volverEscenario");
+		escenaDestruir = this.scene.get("mapa")
 		juego.destruirEscena(this)
 		escenaDestruir.scene.remove("mapa");
 		this.scene.add("mapa", seleccionMapa, true);
@@ -110,7 +111,8 @@
     })
 	
 	elegirPersonaje.on("pointerup", () => {
-		let escenaDestruir = this.scene.get("SelectPers")
+		conexion.send("volverPersonaje");
+		escenaDestruir = this.scene.get("SelectPers")
 		juego.destruirEscena(this)
 		escenaDestruir.scene.remove("SelectPers");
 		this.scene.add("SelectPers", selectorPersonaje, true);
@@ -119,17 +121,48 @@
     })
 	
 	volverMenu.on("pointerup", () => {
-		let escenaDestruir = this.scene.get("menu")
+		conexion.send("volverMenu");
+		escenaDestruir = this.scene.get("menu")
 		juego.destruirEscena(this)
 		escenaDestruir.scene.remove("menu");
 		this.scene.add("menu", menuPrincipal, true);
 	  
     })
+	
+	
 
   
 
     
 
   }
+  
+  update(){
+			switch(manejadorWS.recivirFinPartida()){
+				case "volverCombate":
+					juego.destruirEscena(this)
+					this.scene.add("combate", combate, true); 
+					break;
+				case "volverEscenario":
+					escenaDestruir = this.scene.get("mapa")
+					juego.destruirEscena(this)
+					this.scene.remove("mapa");
+					this.scene.add("mapa", seleccionMapa, true);
+					break;
+				case "volverPersonaje":
+					escenaDestruir = this.scene.get("SelectPers")
+					juego.destruirEscena(this)
+					this.scene.remove("SelectPers");
+					this.scene.add("SelectPers", selectorPersonaje, true);
+					break;
+				case "volverMenu":
+					escenaDestruir = this.scene.get("menu")
+					juego.destruirEscena(this)
+					this.scene.remove("menu");
+					this.scene.add("menu", menuPrincipal, true);
+					break;
+				
+			}
+	}
 
 }

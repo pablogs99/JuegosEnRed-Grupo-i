@@ -30,6 +30,7 @@
   }
 
   create() {
+	  manejadorWS.setJugador(infoWS);
 
     //Se le suma al eje y para bajarlo
     //Se le suma al eje x para moverlo a la derecha
@@ -178,8 +179,10 @@
 
     //----------------- Click En Botones UI --------------------------------------------//
     jugarBoton.on("pointerup", () => {
-      let escenaDestruir = this.scene.get("SelectPers")
-		escenaDestruir.scene.remove("SelectPers");
+		this.scene.remove("combate");
+		
+		
+		this.scene.remove("SelectPers");
 		this.scene.add("SelectPers", selectorPersonaje, true);
     })
 

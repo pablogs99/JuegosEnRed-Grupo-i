@@ -9,9 +9,14 @@ class combate extends Phaser.Scene {
 	preload(){
 		
 		//Creamos los objetos jugador
-		jugador1 = new Jugador(1,juego.personajeJugador1);
-		jugador2 = new Jugador(-1,juego.personajeJugador2);
 		
+		if(manejadorWS.jugadorID == 1){
+			jugador1 = new Jugador(1,juego.personajeJugador1,false);
+			jugador2 = new Jugador(-1,juego.personajeJugador2,true);
+		}else if(manejadorWS.jugadorID == 2){
+			jugador1 = new Jugador(-1,juego.personajeJugador2,false);
+			jugador2 = new Jugador(1,juego.personajeJugador1,true);
+		}
 		//Cargamos los datos del personaje
 		
 		//Cargamos las hojas de sprites
@@ -64,11 +69,14 @@ class combate extends Phaser.Scene {
 					
 		}, this);
 		
+		console.log(jugador1.velocidad);
+		console.log(jugador2.velocidad);
+		
 		
 	}
 	
 	update(){
-		
+		manejadorWS.recivirFinCombate();
 		// Recogemos información de teclado
 		juego.checkInputPersonaje1(this);
 		juego.checkInputPersonaje2(this);
@@ -77,14 +85,19 @@ class combate extends Phaser.Scene {
 		
 		//plataformas.setVelocityX(10);
 			
-			
+		manejadorWS.recivirEstadoJugador();
 			
 		//Iniciamos la animacion actual del personaje
 		jugador1.playAnimation(this);
 		jugador2.playAnimation(this);
 		
 		jugador1.comprobarEstado(this);
-		jugador2.comprobarEstado(this)
+		jugador2.comprobarEstado(this);
+		
+		
+		
+		
+		
 		
 		if(juego.fin){
 			juego.fin = false;
@@ -116,26 +129,23 @@ class combate extends Phaser.Scene {
 					break;
 			}
 			
-			console.log(juego.campeon)
+			//console.log(juego.campeon)
 			
 			historia += juego.campeon;
 			
-			console.log(historia)
+			//console.log(historia)
 			
+				if(manejadorWS.jugadorID == 1){
+				$.ajax({
+				method: "POST",
+				url:"/historial/" + historia, 
+				});
 			
-			$.ajax({
-			method: "POST",
-			url:"/historial/" + historia, 
-			});
+				actualizarHistorial();
+				controladorHistorial.separar();
+			}
 			
-			actualizarHistorial();
-			controladorHistorial.separar();
-			
-			juego.iteracion = juego.iteracion + 1;			
-			let key = "finPartida" + juego.iteracion
-			console.log(key);
-			let nuevo = new finPartida(key)
-			this.scene.add(key, nuevo, true);
+			this.scene.add("menu", menuPrincipal, true);
 				
 			
 		}
