@@ -132,6 +132,20 @@ En la entrega hemos incluido tanto el archivo ".jar" como el proyecto maven que 
 2. En el archivo app.java, click derecho Run As> Java Application
 3. Abra el navegador y escriba en la barra de busqueda: http://localhost:8080/
 
+# Entrega: Cuarta Fase
+## Actualización de clases
+![alt text](https://github.com/pablogs99/JuegosEnRed-Grupo-i/blob/master/juegosEnRed/src/main/resources/static/extra/diagramaDeClasesExtra.png)
+
+Como podemos comprobar, en esta fase solo hemos implementado una nueva clase que nos ayudará la hora de gestionar los mensajes enviados por el WebSocket.
+
+## Implementación de los WebSocket
+En el lado del servidor, hemos creado un array de dimensión 2 para poder almacenar las sesiones de los web sockets. 
+ 
+Enviamos un mensaje inicial para registrar las sesiones de los usuarios. 
+ 
+A partir de ahí, enviamos strings para sincronizar  la gestión de la interfaz y el juego de ambos usuarios. 
+ 
+Esto queda reflejado en la selección de personaje, selección de mapa, y las teclas que usan cada usuario para manipular su personaje en el combate. 
 
 
 
