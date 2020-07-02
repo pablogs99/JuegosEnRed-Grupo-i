@@ -34,7 +34,7 @@ function Elfo(){
 	}
 	
 	this.sizeHitbox = {
-		width:	60,
+		width:	80,
 		height:	89
 	}
 	
@@ -103,7 +103,7 @@ function Lancero(){
 	}
 	
 	this.sizeHitbox = {
-		width:	32,
+		width:	52,
 		height:	89
 	}
 	
@@ -184,7 +184,7 @@ function Caballero(){
 	}
 	
 	this.sizeHitbox = {
-		width:	32,
+		width:	52,
 		height:	89
 	}
 	

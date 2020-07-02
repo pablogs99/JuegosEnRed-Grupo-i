@@ -15,6 +15,7 @@ public class WebsocketEchoHandler extends TextWebSocketHandler {
 	WebSocketSession[] usuarios = new WebSocketSession[2];
 	int registrados = 0;
 	
+	
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception{
 		
@@ -37,6 +38,12 @@ public class WebsocketEchoHandler extends TextWebSocketHandler {
 			}else {
 				session.sendMessage(new TextMessage("Lo sentimos, el servidor no admite más jugadores"));
 			}	
+		}else if(message.getPayload() == null){
+			if(session.getId() == usuarios[0].getId()) {
+				usuarios[1].sendMessage(new TextMessage("JugadorDesconectado"));
+			}else if(session.getId() == usuarios[1].getId()) {
+				usuarios[0].sendMessage(new TextMessage("JugadorDesconectado"));
+			}
 		}else {
 		
 			//---------------- ENVIO DEL RESTO DE MENSAJES -------------------------------
