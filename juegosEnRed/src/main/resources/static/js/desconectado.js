@@ -5,7 +5,7 @@ class desconectado extends Phaser.Scene {
 
   preload() {
     this.load.image(
-      "logo",
+      "desconMsg",
       "../assets/images/backgrounds/menuPrincipal/pantallaDeDesconexion.png"
     );
   }
@@ -14,7 +14,7 @@ class desconectado extends Phaser.Scene {
       .image(
         this.game.renderer.width / 2,
         this.game.renderer.height / 2 - 20,
-        "portada"
+        "desconMsg"
       )
       .setDepth(0)
       .setScale(1.1);

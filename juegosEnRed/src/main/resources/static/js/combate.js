@@ -1,5 +1,6 @@
 var jugador1;
 var jugador2;
+var desconectadoPuesto = false;
 
 var actualizarEstado = function (state) {
   if (state != "") {
@@ -98,7 +99,10 @@ class combate extends Phaser.Scene {
     manejadorWS.recivirFinCombate();
     //
     if (conexion.readyState == 3) {
-      this.scene.add("desconectado", desconectado, true);
+      if (!desconectadoPuesto) {
+        desconectadoPuesto = true;
+        this.scene.add("desconectado", desconectado, true);
+      }
     }
 
     // Recogemos información de teclado

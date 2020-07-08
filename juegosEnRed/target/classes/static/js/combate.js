@@ -1,5 +1,6 @@
 var jugador1;
 var jugador2;
+var desconectadoPuesto = false;
 
 var actualizarEstado = function (state) {
   if (state != "") {
@@ -9,7 +10,7 @@ var actualizarEstado = function (state) {
     jugador2.energia = estado.energia;
     jugador2.animacionActual = estado.animacionActual;
     jugador2.sprite.flipX = estado.flip;
-    //AÑADE PROTEGE JUGADOR 2 CAPULLO
+    jugador2.accion.protege = estado.protege;
     jugador1.hp = estado.eSalud;
   }
 };
@@ -96,8 +97,12 @@ class combate extends Phaser.Scene {
 
   update() {
     manejadorWS.recivirFinCombate();
+    //
     if (conexion.readyState == 3) {
-      this.scene.add("menu", menuPrincipal, true);
+      if (!desconectadoPuesto) {
+        desconectadoPuesto = true;
+        this.scene.add("desconectado", desconectado, true);
+      }
     }
 
     // Recogemos información de teclado
@@ -119,7 +124,7 @@ class combate extends Phaser.Scene {
       jugador1.energia,
       jugador1.animacionActual,
       jugador1.sprite.flipX,
-      //AÑADE PROTEGE CAPULLO
+      jugador1.accion.protege,
       jugador2.hp
     );
 

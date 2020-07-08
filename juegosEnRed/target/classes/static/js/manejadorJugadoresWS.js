@@ -130,14 +130,14 @@ function manejadorJugadores() {
     return mensaje;
   };
 
-  this.enviarInfoJugador = function (x, y, e, an, f, salud) {
+  this.enviarInfoJugador = function (x, y, e, an, f, p, salud) {
     mensaje = {
       posX: x,
       posY: y,
       energia: e,
       animacionActual: an,
       flip: f,
-      //AÑADE PROTEGE CAPULLO
+      protege: p,
       eSalud: salud,
     };
     conexion.send(JSON.stringify(mensaje));
